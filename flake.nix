@@ -87,6 +87,7 @@
         decode-server.overlays.default
         radio-conf.overlays.default
         wartrammer.overlays.default
+        docs.overlays.default
       ];
 
       nixosModules = {
