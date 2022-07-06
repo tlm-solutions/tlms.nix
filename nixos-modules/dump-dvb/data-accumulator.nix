@@ -1,9 +1,9 @@
 { pkgs, config, lib, ... }:
 let
-  cfg = config.dump-dvb.services.data-accumulator;
+  cfg = config.dump-dvb.services.dataAccumulator;
 in
 {
-  options.dump-dvb.services.data-accumulator = with lib; {
+  options.dump-dvb.services.dataAccumulator = with lib; {
     enable = mkOption {
       type = types.bool;
       default = false;
@@ -41,6 +41,14 @@ in
       type = type.either type.str type.path;
       default = "";
     };
+    user = mkOption {
+      type = types.str;
+      default = "data-accumulator";
+    };
+    group = mkOption {
+      type = types.str;
+      default = "data-accumulator";
+    };
   };
 
   # TODO: nice assertions for everything, Or just let the pkgs deal with that?
@@ -72,14 +80,12 @@ in
     };
 
     # user accounts for systemd units
-    users.users = {
-      data-accumulator = {
-        name = "data-accumulator";
-        description = "";
-        isNormalUser = false;
-        isSystemUser = true;
-        group = config.users.groups.postgres-dvbdump.name;
-      };
+    users.users."${cfg.user}" = {
+      name = "${cfg.user}";
+      description = "";
+      isNormalUser = false;
+      isSystemUser = true;
+      group = cfg.group;
     };
   };
 }
