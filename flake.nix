@@ -75,7 +75,7 @@
     , wartrammer
     , windshield
     , ...
-  }:
+    }:
     {
       # composes all of our overlays into one
       overlays.default = nixpkgs.lib.composeManyExtensions [
@@ -89,9 +89,9 @@
         wartrammer.overlays.default
       ];
 
-    nixosModules = {
-      dump-dvb = import ./nixos-modules/dump-dvb self;
-      default = self.nixosModules.dump-dvb;
+      nixosModules = {
+        dump-dvb = import ./nixos-modules/dump-dvb self;
+        default = self.nixosModules.dump-dvb;
+      };
     };
-  };
 }

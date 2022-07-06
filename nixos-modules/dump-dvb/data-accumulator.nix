@@ -40,8 +40,8 @@ in
     DBPasswordFile = mkOption {
       type = type.either type.str type.path;
       default = "";
+    };
   };
-};
 
   # TODO: nice assertions for everything, Or just let the pkgs deal with that?
   config = lib.mkIf cfg.enable {

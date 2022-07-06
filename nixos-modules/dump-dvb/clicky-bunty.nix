@@ -32,7 +32,7 @@ in
       type = types.either type.str type.path;
       default = "";
     };
-    postgresHost  = mkOption {
+    postgresHost = mkOption {
       type = types.str;
       default = "127.0.0.1";
     };
@@ -55,39 +55,39 @@ in
     systemd = {
       services = {
         "clicky-bunty-server" = {
-        enable = true;
+          enable = true;
 
-        description = "dvbdump managment service";
-        wantedBy = [ "multi-user.target" ];
+          description = "dvbdump managment service";
+          wantedBy = [ "multi-user.target" ];
 
-        script = ''
-          export RUST_BACKTRACE=${cfg.rustBackstrace}
-          export SALT_PATH=${cfg.saltFile}
-          export POSTGRES_PASSWORD=$(cat ${cfg.postgresPasswordFile})
-          exec ${pkgs.clicky-bunty-server}/bin/clicky-bunty-server --host ${cfg.host} --port ${toString cfg.port}&
-        '';
+          script = ''
+            export RUST_BACKTRACE=${cfg.rustBackstrace}
+            export SALT_PATH=${cfg.saltFile}
+            export POSTGRES_PASSWORD=$(cat ${cfg.postgresPasswordFile})
+            exec ${pkgs.clicky-bunty-server}/bin/clicky-bunty-server --host ${cfg.host} --port ${toString cfg.port}&
+          '';
 
-        environment = {
-          "POSTGRES_HOST" = "${cfg.postgresHost}";
-          "POSTGRES_PORT" = "${toString cfg.postgresPort}";
+          environment = {
+            "POSTGRES_HOST" = "${cfg.postgresHost}";
+            "POSTGRES_PORT" = "${toString cfg.postgresPort}";
+          };
+
+          serviceConfig = {
+            Type = "forking";
+            User = "clicky-bunty-server";
+            Restart = "always";
+          };
         };
 
-        serviceConfig = {
-          Type = "forking";
-          User = "clicky-bunty-server";
-          Restart = "always";
-        };
       };
+    };
 
+    # user accounts for systemd units
+    users.users."${cfg.user}" = {
+      name = cfg.user;
+      isSystemUser = true;
+      group = cfg.group;
     };
   };
-
-  # user accounts for systemd units
-  users.users."${cfg.user}" = {
-    name = cfg.user;
-    isSystemUser = true;
-    group = cfg.group;
-  };
-};
 
 }
