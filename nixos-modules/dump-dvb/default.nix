@@ -1,11 +1,12 @@
 self:
 { pkgs, ... }: {
   imports = [
-    ./gnuradio.nix
-    ./data-accumulator.nix
-    ./telegram-decoder.nix
     ./binary-cache.nix
     ./clicky-bunty.nix
+    ./data-accumulator.nix
+    ./funnel.nix
+    ./gnuradio.nix
+    ./telegram-decoder.nix
     ./telegram-decoder.nix
   ];
 
