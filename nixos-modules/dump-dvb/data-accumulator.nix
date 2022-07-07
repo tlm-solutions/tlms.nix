@@ -1,9 +1,9 @@
 { pkgs, config, lib, ... }:
 let
-  cfg = config.dump-dvb.services.dataAccumulator;
+  cfg = config.dump-dvb.dataAccumulator;
 in
 {
-  options.dump-dvb.services.dataAccumulator = with lib; {
+  options.dump-dvb.dataAccumulator = with lib; {
     enable = mkOption {
       type = types.bool;
       default = false;

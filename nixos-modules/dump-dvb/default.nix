@@ -6,6 +6,7 @@ self:
     ./telegram-decoder.nix
     ./binary-cache.nix
     ./clicky-bunty.nix
+    ./telegram-decoder.nix
   ];
 
   nixpkgs.overlays = [

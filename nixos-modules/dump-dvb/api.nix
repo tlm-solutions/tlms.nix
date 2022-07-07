@@ -1,6 +1,6 @@
 { pkgs, config, ... }:
 {
-  options.dumpDVB.api = with lib; {
+  options.dump-dvb.api = with lib; {
     enable = mkOption {
       type = types.bool;
       default = false;

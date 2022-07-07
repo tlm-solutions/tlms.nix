@@ -1,9 +1,9 @@
 { pkgs, config, lib, ... }:
 let
-  cfg = config.dump-dvb.services.gnuradio;
+  cfg = config.dump-dvb.gnuradio;
 in
 {
-  options.dump-dvb.services.gnuradio = with lib; {
+  options.dump-dvb.gnuradio = with lib; {
     enable = mkOption {
       type = types.bool;
       default = false;

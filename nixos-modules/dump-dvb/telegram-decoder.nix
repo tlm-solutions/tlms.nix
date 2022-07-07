@@ -1,9 +1,9 @@
 { config, lib, pkgs, ... }:
 let
-  cfg = config.dump-dvb.services.telegram-decoder;
+  cfg = config.dump-dvb.telegramDecoder;
 in
 {
-  options.dump-dvb.services.telegram-decoder = with lib; {
+  options.dump-dvb.telegramDecoder = with lib; {
     enable = mkOption {
       type = types.bool;
       default = false;
