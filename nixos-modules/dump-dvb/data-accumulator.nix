@@ -17,7 +17,7 @@ in
       '';
     };
     port = mkOption {
-      type = types.int;
+      type = types.port;
       default = 8080;
       description = ''
         To which port should data-accumulator bind.
@@ -31,7 +31,7 @@ in
       '';
     };
     DBPort = mkOption {
-      type = types.int;
+      type = types.port;
       default = 5354;
       description = ''
         Database port

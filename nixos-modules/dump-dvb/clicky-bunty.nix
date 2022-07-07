@@ -21,7 +21,7 @@ in
     };
 
     port = mkOption {
-      type = types.int;
+      type = types.port;
       default = 5070;
     };
     saltFile = mkOption {

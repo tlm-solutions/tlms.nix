@@ -22,8 +22,6 @@ in
     authTokenFile = mkOption {
       type = types.either types.str types.path;
       default = "";
-      example = ''
-      '';
       description = ''Path to telegram-decoder auth token'';
     };
   };

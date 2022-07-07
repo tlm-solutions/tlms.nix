@@ -14,7 +14,7 @@
       defalut = 50051;
     };
     port = mkOption {
-      type = types.int;
+      type = types.port;
       default = 9001;
     };
     graphFile = mkOption {
