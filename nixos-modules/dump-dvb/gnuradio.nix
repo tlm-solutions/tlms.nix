@@ -39,6 +39,11 @@ in
 
   config = lib.mkIf cfg.enable {
 
+    hardware = {
+      hackrf.enable = true;
+      rtl-sdr.enable = true;
+    };
+
     environment.systemPackages = [ pkgs.gnuradio-decoder ];
 
     systemd.services."gnuradio" = {
