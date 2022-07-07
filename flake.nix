@@ -9,7 +9,6 @@
 
     data-accumulator = {
       url = github:dump-dvb/data-accumulator;
-      # url = github:dump-dvb/data-accumulator;
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -20,7 +19,6 @@
 
     dvb-api = {
       url = github:dump-dvb/dvb-api;
-      # url = git+file:../dvb-api;
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
