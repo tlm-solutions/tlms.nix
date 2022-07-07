@@ -32,6 +32,10 @@ in
       type = types.str;
       default = "funnel";
     };
+    group = mkOption {
+      type = types.str;
+      default = "funnel";
+    };
   };
 
   config = lib.mkIf cfg.enable {
@@ -64,6 +68,7 @@ in
         name = "${cfg.user}";
         description = "public websocket service user";
         isSystemUser = true;
+        group = "${cfg.group}";
         extraGroups = [ ];
       };
     };
