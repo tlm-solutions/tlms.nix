@@ -25,11 +25,11 @@ in
       default = 5070;
     };
     saltFile = mkOption {
-      type = types.either type.str type.path;
+      type = types.either types.str types.path;
       default = "";
     };
     postgresPasswordFile = mkOption {
-      type = types.either type.str type.path;
+      type = types.either types.str types.path;
       default = "";
     };
     postgresHost = mkOption {
@@ -61,7 +61,7 @@ in
           wantedBy = [ "multi-user.target" ];
 
           script = ''
-            export RUST_BACKTRACE=${cfg.rustBackstrace}
+            export RUST_BACKTRACE=${cfg.rustBacktrace}
             export SALT_PATH=${cfg.saltFile}
             export POSTGRES_PASSWORD=$(cat ${cfg.postgresPasswordFile})
             exec ${pkgs.clicky-bunty-server}/bin/clicky-bunty-server --host ${cfg.host} --port ${toString cfg.port}&

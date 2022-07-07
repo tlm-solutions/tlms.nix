@@ -17,28 +17,28 @@ in
       '';
     };
     port = mkOption {
-      type = type.int;
+      type = types.int;
       default = 8080;
       description = ''
         To which port should data-accumulator bind.
       '';
     };
     DBHost = mkOption {
-      type = type.str;
+      type = types.str;
       default = "127.0.0.1";
       description = ''
         Database host
       '';
     };
     DBPort = mkOption {
-      type = type.int;
-      default = "5354";
+      type = types.int;
+      default = 5354;
       description = ''
         Database port
       '';
     };
     DBPasswordFile = mkOption {
-      type = type.either type.str type.path;
+      type = types.either types.str types.path;
       default = "";
     };
     user = mkOption {
