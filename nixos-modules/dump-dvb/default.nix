@@ -6,6 +6,7 @@ self:
     ./data-accumulator.nix
     ./funnel.nix
     ./gnuradio.nix
+    ./json.nix
     ./telegram-decoder.nix
     ./telegram-decoder.nix
   ];
