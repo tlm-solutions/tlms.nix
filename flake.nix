@@ -29,7 +29,6 @@
 
     stops = {
       url = github:dump-dvb/stop-names;
-      flake = false;
     };
 
     windshield = {
@@ -84,6 +83,7 @@
         clicky-bunty-server.overlays.default
         decode-server.overlays.default
         radio-conf.overlays.default
+        stops.overlays.default
         wartrammer.overlays.default
         docs.overlays.default
       ];
