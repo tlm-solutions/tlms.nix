@@ -1,15 +1,15 @@
 { lib, pkgs, config, ... }:
 with lib; {
-  dump-dvb = {
+  options.dump-dvb = {
     stopsJson = mkOption {
-      type = types.path;
-      default = "${pkgs.stops-json}/stops.json";
-      description = "stops conig json";
+      type = types.str;
+      default = "";
+      description = "stops.json location";
     };
-    dump-dvb.graphJson = mkOption {
-      type = types.path;
-      default = "${pkgs.graph-json}/graph.json";
-      description = "graph json containing the network graphs";
+    graphJson = mkOption {
+      type = types.str;
+      default = "";
+      description = "graph.json location";
     };
   };
 }

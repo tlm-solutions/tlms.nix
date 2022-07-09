@@ -27,10 +27,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    stops = {
-      url = github:dump-dvb/stop-names;
-    };
-
     windshield = {
       url = github:dump-dvb/windshield;
       inputs.nixpkgs.follows = "nixpkgs";
@@ -68,7 +64,6 @@
     , nixpkgs
     , utils
     , radio-conf
-    , stops
     , wartrammer
     , windshield
     , ...
@@ -83,7 +78,6 @@
         clicky-bunty-server.overlays.default
         decode-server.overlays.default
         radio-conf.overlays.default
-        stops.overlays.default
         wartrammer.overlays.default
         docs.overlays.default
       ];

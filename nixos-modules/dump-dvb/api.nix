@@ -1,4 +1,7 @@
 { pkgs, config, ... }:
+let
+  cfg = config.dump-dvb.api;
+in
 {
   options.dump-dvb.api = with lib; {
     enable = mkOption {
