@@ -69,6 +69,7 @@ in
             "GRPC_HOST_2" = "http://127.0.0.1:50051";
             "POSTGRES_HOST" = "${cfg.DBHost}";
             "POSTGRES_PORT" = "${toString cfg.DBPort}";
+            "DATABASE_BACKEND" = "POSTGRES";
           };
           serviceConfig = {
             Type = "forking";
