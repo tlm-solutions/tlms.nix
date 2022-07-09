@@ -508,11 +508,11 @@
         "utils": "utils_7"
       },
       "locked": {
-        "lastModified": 1657312570,
-        "narHash": "sha256-gwHdun4iEKgXD4s05SFg/38JcIErvY3vGy6R4804YZs=",
+        "lastModified": 1657383060,
+        "narHash": "sha256-9Hv0S63JealU0ovHue5KHJNnrIhN9PWfDSrDDBxUnXc=",
         "owner": "dump-dvb",
         "repo": "stop-names",
-        "rev": "6abf93278e2baf456b44425f211b5bb883ecabd0",
+        "rev": "5722098867e267b7a0f08390692a4a5d22b6bde9",
         "type": "github"
       },
       "original": {
