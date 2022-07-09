@@ -31,11 +31,11 @@
         "utils": "utils_2"
       },
       "locked": {
-        "lastModified": 1657395012,
-        "narHash": "sha256-DzRwt1TE0mUb4VnE/5CNpW9BwLDNmysMt8zAMZq//pg=",
+        "lastModified": 1657398177,
+        "narHash": "sha256-3QEvHevT/gjLKuYP4KTFlOuNQb3fvVBpXEXbICX+aRY=",
         "owner": "dump-dvb",
         "repo": "clicky-bunty-server",
-        "rev": "809bd1b2c261d32e7e87be96e917ea4690b6f714",
+        "rev": "5ffb796fd9483caa7eecd839bf76eba9819fb18c",
         "type": "github"
       },
       "original": {
@@ -54,11 +54,11 @@
         "utils": "utils_3"
       },
       "locked": {
-        "lastModified": 1657386800,
-        "narHash": "sha256-BSHLPDDzFywX2eYU5OVC8+qs12mRHoYjuU4TpNlV0xc=",
+        "lastModified": 1657397379,
+        "narHash": "sha256-9Gf18HR07OiXX/AZC+vr9jw3c7Qf7LVfl5cuhC9huWk=",
         "owner": "dump-dvb",
         "repo": "data-accumulator",
-        "rev": "5145da9a1faa99e93a116c152b9f223148314348",
+        "rev": "d7c69f02a2a5bb46b1c93dfe45dd454e65140b92",
         "type": "github"
       },
       "original": {
@@ -77,11 +77,11 @@
         "utils": "utils_4"
       },
       "locked": {
-        "lastModified": 1657317026,
-        "narHash": "sha256-xtIu0IZ92osIC4i8LgWqNzVBhBzgrZ/s4lo0D09MDOc=",
+        "lastModified": 1657397584,
+        "narHash": "sha256-AaCZIN2XTHFvXS0NPMhtpXQUgVOSM647FYiamY7BV7k=",
         "owner": "dump-dvb",
         "repo": "decode-server",
-        "rev": "7cafce3d0c4318f53bb4e57d62f5b75a79513196",
+        "rev": "c1e24573c71fff0919cae7fb5af53153c11a1532",
         "type": "github"
       },
       "original": {
