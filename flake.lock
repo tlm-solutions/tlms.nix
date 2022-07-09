@@ -141,11 +141,11 @@
         "utils": "utils_6"
       },
       "locked": {
-        "lastModified": 1657409148,
-        "narHash": "sha256-wiYb7+MsOyDQLkWBOTx+SR1VTIE511K1OufHil0qGvU=",
+        "lastModified": 1657409504,
+        "narHash": "sha256-OUcyz/QzPVSVr1R3Ccatj0TY2nl7deZbTi1Zc16hIC4=",
         "owner": "dump-dvb",
         "repo": "funnel",
-        "rev": "105a1f023eaca0b9db0f6562bfea32b9a656208b",
+        "rev": "d6a7fd2f6ac8f774e6fa9ce69ea1402a18208b88",
         "type": "github"
       },
       "original": {
