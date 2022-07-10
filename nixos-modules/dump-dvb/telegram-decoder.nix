@@ -15,7 +15,7 @@ in
       description = ''URL of the dump-dvb websocket'';
     };
     configFile = mkOption {
-      type = types.str;
+      type = types.either types.str types.path;
       default = "/etc/telegram-decoder/settings.json";
       description = ''Path to telegram-decoder config'';
     };
