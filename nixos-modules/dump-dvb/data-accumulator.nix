@@ -28,7 +28,7 @@ in
       default = "";
       description = ''
         If set, to which CSV files to write captured telegrams
-        '';
+      '';
     };
     DB = {
       backend = mkOption {
@@ -71,29 +71,29 @@ in
     };
     GRPC = mkOption {
       type = types.listOf
-      (types.submodule {
-        options.name = mkOption {
-          type = types.str;
-          default = "";
-          description = ''
-            GRPC name
-          '';
-        };
-        options.host = mkOption {
-          type = types.str;
-          default = "http://127.0.0.1";
-          description = ''
-            GRPC: schema://hostname
-          '';
-        };
-        options.port = mkOption {
-          type = types.port;
-          default = 50051;
-          description = ''
-            GRPC port
-          '';
-        };
-      });
+        (types.submodule {
+          options.name = mkOption {
+            type = types.str;
+            default = "";
+            description = ''
+              GRPC name
+            '';
+          };
+          options.host = mkOption {
+            type = types.str;
+            default = "http://127.0.0.1";
+            description = ''
+              GRPC: schema://hostname
+            '';
+          };
+          options.port = mkOption {
+            type = types.port;
+            default = 50051;
+            description = ''
+              GRPC port
+            '';
+          };
+        });
       default = [ ];
     };
   };
@@ -116,8 +116,11 @@ in
             "POSTGRES_PORT" = "${toString cfg.DB.port}";
             "DATABASE_BACKEND" = "${cfg.DB.backend}";
             "CSV_FILE" = "${cfg.CSVFile}";
-          } // (lib.foldl (x: y:
-          lib.mergeAttrs x { "GRPC_HOST_${y.name}" = "${y.host}:${toString y.port}"; }) { } cfg.GRPC);
+          } // (lib.foldl
+            (x: y:
+              lib.mergeAttrs x { "GRPC_HOST_${y.name}" = "${y.host}:${toString y.port}"; })
+            { }
+            cfg.GRPC);
 
           serviceConfig = {
             Type = "forking";
