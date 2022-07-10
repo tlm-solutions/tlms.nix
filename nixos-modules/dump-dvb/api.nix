@@ -1,4 +1,4 @@
-{ pkgs, config, ... }:
+{ pkgs, config, lib, ... }:
 let
   cfg = config.dump-dvb.api;
 in
@@ -14,7 +14,7 @@ in
     };
     GRPCPort = mkOption {
       type = types.int;
-      defalut = 50051;
+      default = 50051;
     };
     port = mkOption {
       type = types.port;
@@ -28,8 +28,18 @@ in
       type = types.either types.path types.str;
       default = "";
     };
+    user = mkOption {
+      type = types.str;
+      default = "dvb-api";
+      description = "as which user dvb-api should run";
+    };
+    group = mkOption {
+      type = types.str;
+      default = "dvb-api";
+      description = "as which group dvb-api should run";
+    };
   };
-  config = mkIf cfg.enable {
+  config = lib.mkIf cfg.enable {
     systemd = {
       services = {
         "dvb-api" = {
@@ -58,6 +68,7 @@ in
     users.users."${cfg.user}" = {
       name = "${cfg.user}";
       description = "public dvb api service";
+      group = "${cfg.group}";
       isSystemUser = true;
       extraGroups = [ ];
     };

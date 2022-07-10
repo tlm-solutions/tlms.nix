@@ -1,6 +1,7 @@
 self:
 { pkgs, ... }: {
   imports = [
+    ./api.nix
     ./binary-cache.nix
     ./clicky-bunty.nix
     ./data-accumulator.nix
