@@ -107,7 +107,7 @@ in
 
           script = ''
             export POSTGRES_TELEGRAMS_PASSWORD=$(cat ${cfg.DB.telegramsPasswordFile})
-            export POSTGRES_DVDUMP_PASSWORD=$(cat ${cfg.DB.dvbPasswordFile})
+            export POSTGRES_DVBDUMP_PASSWORD=$(cat ${cfg.DB.dvbPasswordFile})
             exec ${pkgs.data-accumulator}/bin/data-accumulator --host ${cfg.host} --port ${toString cfg.port}&
           '';
 
