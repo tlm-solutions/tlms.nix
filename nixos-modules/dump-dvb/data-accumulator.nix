@@ -23,23 +23,36 @@ in
         To which port should data-accumulator bind.
       '';
     };
-    DBHost = mkOption {
-      type = types.str;
-      default = "127.0.0.1";
-      description = ''
-        Database host
-      '';
-    };
-    DBPort = mkOption {
-      type = types.port;
-      default = 5354;
-      description = ''
-        Database port
-      '';
-    };
-    DBPasswordFile = mkOption {
-      type = types.either types.str types.path;
-      default = "";
+    DB = {
+      backend = mkOption {
+        type = types.enum [ "POSTGRES" ];
+        default = "POSTGRES";
+        description = ''
+          Which database to use
+        '';
+      };
+      host = mkOption {
+        type = types.str;
+        default = "127.0.0.1";
+        description = ''
+          Database host
+        '';
+      };
+      port = mkOption {
+        type = types.port;
+        default = 5354;
+        description = ''
+          Database port
+        '';
+      };
+      telegramsPasswordFile = mkOption {
+        type = types.either types.path types.string;
+        default = "";
+      };
+      dvbPasswordFile = mkOption {
+        type = types.either types.path types.string;
+        default = "";
+      };
     };
     user = mkOption {
       type = types.str;
@@ -49,9 +62,35 @@ in
       type = types.str;
       default = "data-accumulator";
     };
+    GRPC = mkOption {
+      type = types.listOf
+      (types.submodule {
+        options.name = mkOption {
+          type = types.str;
+          default = "";
+          description = ''
+            GRPC name
+          '';
+        };
+        options.host = mkOption {
+          type = types.str;
+          default = "http://127.0.0.1";
+          description = ''
+            GRPC: schema://hostname
+          '';
+        };
+        options.port = mkOption {
+          type = types.port;
+          default = 50051;
+          description = ''
+            GRPC port
+          '';
+        };
+      });
+      default = [ ];
+    };
   };
 
-  # TODO: nice assertions for everything, Or just let the pkgs deal with that?
   config = lib.mkIf cfg.enable {
     systemd = {
       services = {
@@ -60,21 +99,21 @@ in
           wantedBy = [ "multi-user.target" ];
 
           script = ''
-            export POSTGRES_TELEGRAMS_PASSWORD=$(cat ${config.sops.secrets.postgres_password_telegrams.path})
-            export POSTGRES_DVDUMP_PASSWORD=$(cat ${config.sops.secrets.postgres_password_dvbdump.path})
+            export POSTGRES_TELEGRAMS_PASSWORD=$(cat ${cfg.DB.telegramsPasswordFile})
+            export POSTGRES_DVDUMP_PASSWORD=$(cat ${cfg.DB.dvbPasswordFile})
             exec ${pkgs.data-accumulator}/bin/data-accumulator --host ${cfg.host} --port ${toString cfg.port}&
           '';
 
           environment = {
-            "GRPC_HOST_1" = "http://127.0.0.1:50051";
-            "GRPC_HOST_2" = "http://127.0.0.1:50051";
-            "POSTGRES_HOST" = "${cfg.DBHost}";
-            "POSTGRES_PORT" = "${toString cfg.DBPort}";
-            "DATABASE_BACKEND" = "POSTGRES";
-          };
+            "POSTGRES_HOST" = "${cfg.DB.host}";
+            "POSTGRES_PORT" = "${toString cfg.DB.port}";
+            "DATABASE_BACKEND" = "${cfg.DB.backend}";
+          } // (lib.foldl (x: y:
+          lib.mergeAttrs x { "GRPC_HOST_${y.name}" = "${y.host}:${toString y.port}"; }) { } cfg.GRPC);
+
           serviceConfig = {
             Type = "forking";
-            User = "data-accumulator";
+            User = cfg.user;
             Restart = "always";
           };
         };
@@ -84,7 +123,7 @@ in
     # user accounts for systemd units
     users.users."${cfg.user}" = {
       name = "${cfg.user}";
-      description = "";
+      description = "This guy runs clicky-bunty-server";
       isNormalUser = false;
       isSystemUser = true;
       group = cfg.group;
