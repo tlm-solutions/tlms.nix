@@ -9,6 +9,7 @@ self:
     ./json.nix
     ./telegram-decoder.nix
     ./telegram-decoder.nix
+    ./wartrammer.nix
   ];
 
   nixpkgs.overlays = [
