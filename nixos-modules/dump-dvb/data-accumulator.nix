@@ -23,9 +23,16 @@ in
         To which port should data-accumulator bind.
       '';
     };
+    CSVFile = mkOption {
+      type = types.str;
+      default = "";
+      description = ''
+        If set, to which CSV files to write captured telegrams
+        '';
+    };
     DB = {
       backend = mkOption {
-        type = types.enum [ "POSTGRES" ];
+        type = types.enum [ "POSTGRES" "CSVFILE" ];
         default = "POSTGRES";
         description = ''
           Which database to use
@@ -108,6 +115,7 @@ in
             "POSTGRES_HOST" = "${cfg.DB.host}";
             "POSTGRES_PORT" = "${toString cfg.DB.port}";
             "DATABASE_BACKEND" = "${cfg.DB.backend}";
+            "CSV_FILE" = "${cfg.CSVFile}";
           } // (lib.foldl (x: y:
           lib.mergeAttrs x { "GRPC_HOST_${y.name}" = "${y.host}:${toString y.port}"; }) { } cfg.GRPC);
 
