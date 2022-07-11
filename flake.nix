@@ -51,11 +51,6 @@
       url = github:dump-dvb/clicky-bunty-server;
       inputs.nixpkgs.follows = "nixpkgs";
     };
-
-    utils = {
-      url = github:numtide/flake-utils;
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
   };
 
   outputs =
@@ -68,7 +63,6 @@
     , dvb-api
     , funnel
     , nixpkgs
-    , utils
     , radio-conf
     , wartrammer
     , windshield

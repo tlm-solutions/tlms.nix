@@ -1,5 +1,5 @@
 self:
-{ pkgs, ... }: {
+{
   imports = [
     ./api.nix
     ./binary-cache.nix
