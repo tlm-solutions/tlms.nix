@@ -31,11 +31,11 @@
         "utils": "utils_2"
       },
       "locked": {
-        "lastModified": 1657398177,
-        "narHash": "sha256-3QEvHevT/gjLKuYP4KTFlOuNQb3fvVBpXEXbICX+aRY=",
+        "lastModified": 1657719782,
+        "narHash": "sha256-VtsxUt9N+VnK0SQSPCcahxu8exEiwYqNjzFG9kkbQSc=",
         "owner": "dump-dvb",
         "repo": "clicky-bunty-server",
-        "rev": "5ffb796fd9483caa7eecd839bf76eba9819fb18c",
+        "rev": "6a59f1c97d7f585777e0dc42cdbd669f91312008",
         "type": "github"
       },
       "original": {
@@ -334,11 +334,11 @@
     },
     "nixpkgs_6": {
       "locked": {
-        "lastModified": 1657476024,
-        "narHash": "sha256-4xnAf6VxE/efOwHt/MsG/g1gmpT78n/8oHqF1atzNjI=",
+        "lastModified": 1657654771,
+        "narHash": "sha256-uIGbt+rU89aTlSx8+4g9vKioWc8nmCCcaaFCNPHM07c=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "cf034a867e08b7e083df1658c915c58456dbbde2",
+        "rev": "4aceab3cadf9fef6f70b9f6a9df964218650db0a",
         "type": "github"
       },
       "original": {
