@@ -72,6 +72,13 @@ in
     GRPC = mkOption {
       type = types.listOf
         (types.submodule {
+          options.schema = mkOption {
+            type = types.enum [ "http" "https" ];
+            default = "http";
+            description = ''
+              schema to connect to GRPC
+            '';
+          };
           options.name = mkOption {
             type = types.str;
             default = "";
@@ -118,7 +125,7 @@ in
             "CSV_FILE" = "${cfg.CSVFile}";
           } // (lib.foldl
             (x: y:
-              lib.mergeAttrs x { "GRPC_HOST_${y.name}" = "${y.host}:${toString y.port}"; })
+              lib.mergeAttrs x { "GRPC_HOST_${y.name}" = "${y.schema}://${y.host}:${toString y.port}"; })
             { }
             cfg.GRPC);
 
