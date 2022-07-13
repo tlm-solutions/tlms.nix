@@ -88,7 +88,7 @@ in
           };
           options.host = mkOption {
             type = types.str;
-            default = "http://127.0.0.1";
+            default = "127.0.0.1";
             description = ''
               GRPC: schema://hostname
             '';
