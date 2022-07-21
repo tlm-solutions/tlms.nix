@@ -25,6 +25,18 @@ in
       default = 19550;
       description = ''Offset of the signal from center frequency'';
     };
+    RF = mkOption {
+      type = types.int;
+      default = 14;
+    };
+    IF = mkOption {
+      type = types.int;
+      default = 32;
+    };
+    BB = mkOption {
+      type = types.int;
+      default = 42;
+    };
     user = mkOption {
       type = types.str;
       default = "gnuradio";
@@ -50,7 +62,7 @@ in
       enable = true;
       wantedBy = [ "multi-user.target" ];
 
-      script = "exec ${pkgs.gnuradio-decoder}/bin/gnuradio-decoder-cpp ${toString cfg.frequency} ${toString cfg.offset} ${cfg.device} &";
+      script = "exec ${pkgs.gnuradio-decoder}/bin/gnuradio-decoder-cpp ${toString cfg.frequency} ${toString cfg.offset} ${toString cfg.RF} ${toString cfg.IF} ${toString cfg.BB} ${cfg.device} &";
 
       serviceConfig = {
         Type = "forking";
