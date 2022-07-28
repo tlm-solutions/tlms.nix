@@ -8,11 +8,11 @@ in
       type = types.bool;
       default = false;
     };
-    GRPCHost = mkOption {
+    GRPC.host = mkOption {
       type = types.str;
       default = "127.0.0.1";
     };
-    GRPCPort = mkOption {
+    GRPC.port = mkOption {
       type = types.int;
       default = 50051;
     };
@@ -49,7 +49,7 @@ in
           script = "exec ${pkgs.dvb-api}/bin/dvb-api &";
 
           environment = {
-            "GRPC_HOST" = "${cfg.GRPCHost}:${toString cfg.GRPCPort}";
+            "GRPC_HOST" = "${cfg.GRPC.host}:${toString cfg.GRPC.port}";
             "HTTP_PORT" = "${toString cfg.port}";
             "GRAPH_FILE" = "${cfg.graphFile}";
             "STOPS_FILE" = "${cfg.stopsFile}";
