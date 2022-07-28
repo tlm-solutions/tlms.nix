@@ -51,6 +51,12 @@
       url = github:dump-dvb/clicky-bunty-server;
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    stops = {
+      url = github:dump-dvb/stop-names;
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
   };
 
   outputs =
@@ -66,6 +72,7 @@
     , radio-conf
     , wartrammer
     , windshield
+    , stops
     , ...
     }:
     {
@@ -79,6 +86,7 @@
         dvb-api.overlays.default
         funnel.overlays.default
         radio-conf.overlays.default
+        stops.overlays.default
         wartrammer.overlays.default
         windshield.overlays.default
       ];
