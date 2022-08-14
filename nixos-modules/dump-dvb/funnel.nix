@@ -48,8 +48,8 @@ in
           script = "exec ${pkgs.funnel}/bin/funnel &";
 
           environment = {
-            "GRPC_PORT" = "${cfg.GRPC.port}";
-            "WEBSOCKET_PORT" = "${cfg.defaultWebsocket.port}";
+            "GRPC_PORT" = "${toString cfg.GRPC.port}";
+            "WEBSOCKET_PORT" = "${toString cfg.defaultWebsocket.port}";
             #"GRPC_HOST" = "${cfg.GRPC.host}:${toString cfg.GRPC.port}";
             #"DEFAULT_WEBSOCKET_HOST" = "${cfg.defaultWebsocket.host}:${toString cfg.defaultWebsocket.port}";
             "GRAPH_FILE" = "${config.dump-dvb.graphJson}";
