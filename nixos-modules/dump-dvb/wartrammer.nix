@@ -43,12 +43,12 @@ in
         virtualHosts = {
           "wartrammer" = {
             locations = {
+              "/api/" = {
+                proxyPass = "http://127.0.0.1:${toString cfg.port}";
+              };
               "/" = {
                 root = "${pkgs.wartrammer-frontend}/bin/";
                 index = "index.html";
-              };
-              "/api" = {
-                proxyPass = "http://127.0.0.1:${toString cfg.port}";
               };
             };
           };
