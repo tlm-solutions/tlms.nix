@@ -60,7 +60,7 @@ in
       enable = true;
       wantedBy = [ "multi-user.target" ];
       script = ''
-        exec ${pkgs.wartrammer-backend}/bin/wartrammer-40k --port ${toString cfg.port}
+        exec ${pkgs.wartrammer-frontend}/bin/wartrammer-40k --port ${toString cfg.port}
       '';
       serviceConfig = {
         Type = "forking";
