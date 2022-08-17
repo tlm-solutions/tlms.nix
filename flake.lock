@@ -54,11 +54,11 @@
         "utils": "utils_3"
       },
       "locked": {
-        "lastModified": 1659726447,
-        "narHash": "sha256-PjmVQEU9zHU37i9TGzcpsNeR9edTGe2hfVF53gPea64=",
+        "lastModified": 1660751368,
+        "narHash": "sha256-4sFaO5KS3CxNYQZZ2VMudtfetEiF1yT9K1tjV3kE1fU=",
         "owner": "dump-dvb",
         "repo": "data-accumulator",
-        "rev": "a61e191655267f98fb053c1b9e26538997b6d2a2",
+        "rev": "ac988cd33ce9f35d9a0c82dc056f7bfa1b324d43",
         "type": "github"
       },
       "original": {
@@ -673,11 +673,11 @@
         "utils": "utils_9"
       },
       "locked": {
-        "lastModified": 1660749889,
-        "narHash": "sha256-NtHk06MuEMM66D43T3roGF3SYSXD8ITnvh7HgXHJin0=",
+        "lastModified": 1660751882,
+        "narHash": "sha256-Iq9c/bRor1kuUqgz0yfq2ub0+W+oXZDhGMm/kc5Eu4I=",
         "owner": "dump-dvb",
         "repo": "wartrammer-40k",
-        "rev": "c0e37b287e2c7fdf4b67b4a3ab30a1e4fa3a5005",
+        "rev": "e95c81e7cbbd4960fbce5e7ccd1184948f1261e0",
         "type": "github"
       },
       "original": {
