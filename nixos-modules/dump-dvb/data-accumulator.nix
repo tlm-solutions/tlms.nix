@@ -30,6 +30,14 @@ in
         If set, to which CSV files to write captured telegrams
       '';
     };
+    offline = mkOption {
+      type = types.bool;
+      default = false;
+      description = ''
+        If set to true this will run in war tramming mode with out any authentication
+      '';
+    };
+
     DB = {
       backend = mkOption {
         type = types.enum [ "POSTGRES" "CSVFILE" ];
@@ -115,7 +123,7 @@ in
           script = ''
             export POSTGRES_TELEGRAMS_PASSWORD=$(cat ${cfg.DB.telegramsPasswordFile})
             export POSTGRES_DVBDUMP_PASSWORD=$(cat ${cfg.DB.dvbPasswordFile})
-            exec ${pkgs.data-accumulator}/bin/data-accumulator --host ${cfg.host} --port ${toString cfg.port}&
+            exec ${pkgs.data-accumulator}/bin/data-accumulator --host ${cfg.host} --port ${toString cfg.port} --offline ${cfg.offline}&
           '';
 
           environment = {
