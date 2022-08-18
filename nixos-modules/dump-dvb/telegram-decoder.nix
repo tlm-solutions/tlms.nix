@@ -24,6 +24,11 @@ in
       default = "";
       description = ''Path to telegram-decoder auth token'';
     };
+    offline = mkOption {
+      type = types.bool;
+      default = false;
+      description = ''runs telegram-decoder in offline mode used for mobile stations'';
+    };
   };
 
 
@@ -44,7 +49,7 @@ in
       enable = true;
       wantedBy = [ "multi-user.target" ];
 
-      script = "exec ${pkgs.telegram-decoder}/bin/telegram-decode --config ${cfg.configFile} --server ${(builtins.concatStringsSep " " cfg.server)} &";
+      script = "exec ${pkgs.telegram-decoder}/bin/telegram-decode --config ${cfg.configFile} --server ${(builtins.concatStringsSep " " cfg.server)} --offline ${if cfg.offline then "--offline" else ""}&";
 
       environment = {
         AUTHENTICATION_TOKEN_PATH = cfg.authTokenFile;
