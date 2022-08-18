@@ -54,11 +54,11 @@
         "utils": "utils_3"
       },
       "locked": {
-        "lastModified": 1660759311,
-        "narHash": "sha256-IR6YsHoUy81D8f0SK90rv2QGzu0htNRuNzuX/HEcW8o=",
+        "lastModified": 1660818176,
+        "narHash": "sha256-sTb+JH1onmujoN6g9EZ4WD6fcTlZ0ts5xgjIutNOQ3o=",
         "owner": "dump-dvb",
         "repo": "data-accumulator",
-        "rev": "91031dbfb448a1ccc75f3b425e66da94f02c4f66",
+        "rev": "2391b531562e082e1bd0f022e881d2fa9ecb6984",
         "type": "github"
       },
       "original": {
@@ -361,11 +361,11 @@
     },
     "nixpkgs_5": {
       "locked": {
-        "lastModified": 1660581366,
-        "narHash": "sha256-et+bi9/jlSF/pHx5AYB9ZP2XDdZEQ0vnF7xlvs4503Y=",
+        "lastModified": 1660661643,
+        "narHash": "sha256-WlgPb7KLTZUeY31o9HWhu37pvgA76MKwakaXefkaIB4=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "3d47bbaa26e7a771059d828eecf3bd8bf28a8b0f",
+        "rev": "a82127cea64fd801c5e138ae23dfd444ec1e06d1",
         "type": "github"
       },
       "original": {
@@ -673,11 +673,11 @@
         "utils": "utils_9"
       },
       "locked": {
-        "lastModified": 1660774769,
-        "narHash": "sha256-elGfemZxwrjxe7FtKbPQWPs/GLHJaUIcHJPGcwTGqj4=",
+        "lastModified": 1660817569,
+        "narHash": "sha256-uO7GvkIZXcWMPVxD7qe5TlWRSIop54am/LxMmxBDqLM=",
         "owner": "dump-dvb",
         "repo": "wartrammer-40k",
-        "rev": "00ac4ce047ab286370ac0020ac326a7472ba1e81",
+        "rev": "9e87a3142186e1d6440ad7655c02de570d144056",
         "type": "github"
       },
       "original": {

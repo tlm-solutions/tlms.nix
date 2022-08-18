@@ -62,6 +62,13 @@ in
       script = ''
         exec ${pkgs.wartrammer-backend}/bin/wartrammer-40k --port ${toString cfg.port} &
       '';
+
+      environment = {
+        "PATH_DATA" = "/var/lib/wartrammer-40k/times.json";
+        "IN_DATA" = "/var/lib/data-accumulator/formatted.csv";
+        "OUT_DATA" = "/var/lib/wartrammer-40k/out.csv";
+      };
+
       serviceConfig = {
         Type = "forking";
         User = cfg.user;
