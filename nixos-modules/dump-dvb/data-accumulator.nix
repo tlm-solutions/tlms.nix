@@ -23,11 +23,18 @@ in
         To which port should data-accumulator bind.
       '';
     };
-    CSVFile = mkOption {
+    R09CsvFile = mkOption {
       type = types.str;
       default = "";
       description = ''
-        If set, to which CSV files to write captured telegrams
+        If set, to which CSV files to write captured R09 telegrams
+      '';
+    };
+    RawFile = mkOption {
+      type = types.str;
+      default = "";
+      description = ''
+        If set, to which csv file to write captured unparsed telegrams
       '';
     };
     offline = mkOption {
@@ -130,7 +137,8 @@ in
             "POSTGRES_HOST" = "${cfg.DB.host}";
             "POSTGRES_PORT" = "${toString cfg.DB.port}";
             "DATABASE_BACKEND" = "${cfg.DB.backend}";
-            "CSV_FILE" = "${cfg.CSVFile}";
+            "CSV_FILE_R09" = "${cfg.R09CsvFile}";
+            "CSV_FILE_RAW" = "${cfg.tegramRawFile}";
           } // (lib.foldl
             (x: y:
               lib.mergeAttrs x { "GRPC_HOST_${y.name}" = "${y.schema}://${y.host}:${toString y.port}"; })
