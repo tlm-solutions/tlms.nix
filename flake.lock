@@ -54,11 +54,11 @@
         "utils": "utils_3"
       },
       "locked": {
-        "lastModified": 1660860730,
-        "narHash": "sha256-TKrhtj9icDjdvXwK5hwXvddsIFX+qHOErKMBro9DGpE=",
+        "lastModified": 1660998667,
+        "narHash": "sha256-5T2JdvsPtszf1esoJjH7TG7ppJicB+3FYjVpwCMt8H0=",
         "owner": "dump-dvb",
         "repo": "data-accumulator",
-        "rev": "fee86bc8bf7b9ca91a2eae7f679e4b9c6df632a5",
+        "rev": "e293fa03857a2102a3098fcf7ba0302530ecfb89",
         "type": "github"
       },
       "original": {
@@ -77,11 +77,11 @@
         "utils": "utils_4"
       },
       "locked": {
-        "lastModified": 1660942855,
-        "narHash": "sha256-E4GTE4+B/y3CO/H7ryU1vr/QVTj5jkVY23cPaHIWWLU=",
+        "lastModified": 1661000730,
+        "narHash": "sha256-1kj7GXEw8EHvU8lzUHGEgST2J6AxP3KVwc9Otp40WCY=",
         "owner": "dump-dvb",
         "repo": "decode-server",
-        "rev": "4fb9796ce487173c11958cecdd5a12a34398efcb",
+        "rev": "b013d2834d2261576c372b805bd58c155fc82e7f",
         "type": "github"
       },
       "original": {
@@ -361,11 +361,11 @@
     },
     "nixpkgs_5": {
       "locked": {
-        "lastModified": 1660842467,
-        "narHash": "sha256-lSer61lI5X61/3zjMu4OSUqdKSCW2jM1rU6B3WLBOj4=",
+        "lastModified": 1660926553,
+        "narHash": "sha256-19Ib1b7Ny+yGhnxwnH1KhhB2hvALuNuqevA6XzqkQmo=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "9b9f4bb4e1125a2b9734b05a4c35ff388cabec05",
+        "rev": "00e376e3f3c22d991052dfeaf154c42b09deeb29",
         "type": "github"
       },
       "original": {
