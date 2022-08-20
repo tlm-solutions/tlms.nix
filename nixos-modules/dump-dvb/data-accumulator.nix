@@ -138,7 +138,7 @@ in
             "POSTGRES_PORT" = "${toString cfg.DB.port}";
             "DATABASE_BACKEND" = "${cfg.DB.backend}";
             "CSV_FILE_R09" = "${cfg.R09CsvFile}";
-            "CSV_FILE_RAW" = "${cfg.tegramRawFile}";
+            "CSV_FILE_RAW" = "${cfg.RawFile}";
           } // (lib.foldl
             (x: y:
               lib.mergeAttrs x { "GRPC_HOST_${y.name}" = "${y.schema}://${y.host}:${toString y.port}"; })
