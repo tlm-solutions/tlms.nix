@@ -2,34 +2,59 @@
   inputs = {
     nixpkgs.url = github:NixOS/nixpkgs/nixos-22.05;
 
+    naersk = {
+      url = github:nix-community/naersk;
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    utils = {
+      url = github:numtide/flake-utils;
+    };
+
+    stops-no-flake = {
+      url = "github:dump-dvb/stop-names";
+      flake = false;
+    };
+
     radio-conf = {
       url = github:dump-dvb/radio-conf;
       inputs.nixpkgs.follows = "nixpkgs";
+      inputs.utils.follows = "utils";
     };
 
     data-accumulator = {
       url = github:dump-dvb/data-accumulator;
       inputs.nixpkgs.follows = "nixpkgs";
+      inputs.naersk.follows = "naersk";
+      inputs.utils.follows = "utils";
+      inputs.stops.follows = "stops-no-flake";
     };
 
     decode-server = {
       url = github:dump-dvb/decode-server;
       inputs.nixpkgs.follows = "nixpkgs";
+      inputs.naersk.follows = "naersk";
+      inputs.utils.follows = "utils";
+      inputs.stops.follows = "stops-no-flake";
     };
 
     dvb-api = {
       url = github:dump-dvb/dvb-api;
       inputs.nixpkgs.follows = "nixpkgs";
+      inputs.naersk.follows = "naersk";
+      inputs.utils.follows = "utils";
     };
 
     funnel = {
       url = github:dump-dvb/funnel;
       inputs.nixpkgs.follows = "nixpkgs";
+      inputs.utils.follows = "utils";
     };
 
     windshield = {
       url = github:dump-dvb/windshield;
       inputs.nixpkgs.follows = "nixpkgs";
+      inputs.utils.follows = "utils";
     };
 
     docs = {
@@ -40,21 +65,29 @@
     wartrammer = {
       url = github:dump-dvb/wartrammer-40k;
       inputs.nixpkgs.follows = "nixpkgs";
+      inputs.naersk.follows = "naersk";
+      inputs.utils.follows = "utils";
     };
 
     click = {
       url = github:dump-dvb/click;
       inputs.nixpkgs.follows = "nixpkgs";
+      inputs.utils.follows = "utils";
     };
 
     clicky-bunty-server = {
       url = github:dump-dvb/clicky-bunty-server;
       inputs.nixpkgs.follows = "nixpkgs";
+      inputs.naersk.follows = "naersk";
+      inputs.utils.follows = "utils";
+      inputs.stops.follows = "stops-no-flake";
     };
 
     stops = {
       url = github:dump-dvb/stop-names;
       inputs.nixpkgs.follows = "nixpkgs";
+      inputs.naersk.follows = "naersk";
+      inputs.utils.follows = "utils";
     };
 
   };
