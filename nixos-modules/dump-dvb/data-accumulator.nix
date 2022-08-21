@@ -124,8 +124,8 @@ in
     users.groups.dump-dvb-radio = {
       name = "dump-dvb-radio";
       members = [ 
-        config.systemd.services."wartrammer".serviceConfig.User 
-        config.systemd.services."data-accumulator".serviceConfig.User 
+        "wartrammer"
+        "data-accumulator"
       ];
       gid = 1501;
     };
