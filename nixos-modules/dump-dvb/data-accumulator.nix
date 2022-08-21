@@ -138,7 +138,7 @@ in
 
         "data-accumulator" = {
           enable = true;
-          wantedBy = [ "multi-user.target" "setup-data-accumulator.sergice" ];
+          wantedBy = [ "multi-user.target" "setup-data-accumulator.service" ];
 
           script = ''
             export POSTGRES_TELEGRAMS_PASSWORD=$(cat ${cfg.DB.telegramsPasswordFile})
