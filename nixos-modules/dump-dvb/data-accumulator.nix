@@ -121,6 +121,14 @@ in
   };
 
   config = lib.mkIf cfg.enable {
+    users.groups.dump-dvb-radio = {
+      name = "dump-dvb-radio";
+      members = [ 
+        config.systemd.services."wartrammer".serviceConfig.User 
+        config.systemd.services."data-accumulator".serviceConfig.User 
+      ];
+    };
+
     systemd = {
       services = {
         "setup-data-accumulator" = {
@@ -129,6 +137,7 @@ in
             mkdir -p /var/lib/data-accumulator
             chmod 744 /var/lib/data-accumulator
             chown ${config.systemd.services.data-accumulator.serviceConfig.User} /var/lib/data-accumulator
+            chgrp ${config.users.groups.dump-dvb-radio.name} /var/lib/data-accumulator
           '';
 
           serviceConfig = {
