@@ -123,9 +123,22 @@ in
   config = lib.mkIf cfg.enable {
     systemd = {
       services = {
+        "setup-data-accumulator" = {
+          wantedBy = [ "multi-user.target" ];
+          script = ''
+            mkdir -p /var/lib/data-accumulator
+            chmod 744 /var/lib/data-accumulator
+            chown ${config.systemd.services.data-accumulator.serviceConfig.User} /var/lib/data-accumulator
+          '';
+
+          serviceConfig = {
+            Type = "oneshot";
+          };
+        };
+
         "data-accumulator" = {
           enable = true;
-          wantedBy = [ "multi-user.target" ];
+          wantedBy = [ "multi-user.target" "setup-data-accumulator.sergice" ];
 
           script = ''
             export POSTGRES_TELEGRAMS_PASSWORD=$(cat ${cfg.DB.telegramsPasswordFile})

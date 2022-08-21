@@ -56,9 +56,22 @@ in
       };
     };
 
+    systemd.services."setup-wartrammer" = {
+      wantedBy = [ "multi-user.target" ];
+      script = ''
+        mkdir -p /var/lib/wartrammer-40k
+        chmod 744 /var/lib/wartrammer-40k
+        chown ${config.systemd.services.wartrammer.serviceConfig.User} /var/lib/wartrammer-40k
+      '';
+
+      serviceConfig = {
+        Type = "oneshot";
+      };
+    };
+
     systemd.services."wartrammer" = {
       enable = true;
-      wantedBy = [ "multi-user.target" ];
+      wantedBy = [ "multi-user.target" "setup-wartrammer.service"];
       script = ''
         exec ${pkgs.wartrammer-backend}/bin/wartrammer-40k --port ${toString cfg.port} &
       '';
