@@ -68,11 +68,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1661099768,
-        "narHash": "sha256-sY/ndV7GoPhOcwkIjvgY5K0wZDKbWeLLZxHh/bT5mR8=",
+        "lastModified": 1661106100,
+        "narHash": "sha256-/j9mXML08I8RQXK7G4s/J9EUEuvlVMIBu8zx5iklKr8=",
         "owner": "dump-dvb",
         "repo": "data-accumulator",
-        "rev": "ddb79073b156768837b697a13addafab94ba9e8f",
+        "rev": "8ce165679db64fcc4f0b5c5ad57b4614208790f4",
         "type": "github"
       },
       "original": {

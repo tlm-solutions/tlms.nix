@@ -185,6 +185,7 @@ in
       isSystemUser = true;
       group = cfg.group;
       uid = 1501;
+      extraGroups = [ config.users.groups."dump-dvb-radio".name ];
     };
   };
 }
