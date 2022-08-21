@@ -127,6 +127,7 @@ in
         config.systemd.services."wartrammer".serviceConfig.User 
         config.systemd.services."data-accumulator".serviceConfig.User 
       ];
+      gid = 1501;
     };
 
     systemd = {
@@ -183,6 +184,7 @@ in
       isNormalUser = false;
       isSystemUser = true;
       group = cfg.group;
+      uid = 1501;
     };
   };
 }

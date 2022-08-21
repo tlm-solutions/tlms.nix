@@ -36,6 +36,7 @@ in
 
   config = lib.mkIf cfg.enable {
 
+
     services = {
       nginx = {
         enable = true;
@@ -56,9 +57,8 @@ in
       };
     };
 
-
     systemd.services."setup-wartrammer" = {
-      wantedBy = [ "multi-user.target" ];
+      wantedBy = [ "multi-user.target" "data-accumulator.service" ];
       script = ''
         mkdir -p /var/lib/wartrammer-40k
         chmod 744 /var/lib/wartrammer-40k
