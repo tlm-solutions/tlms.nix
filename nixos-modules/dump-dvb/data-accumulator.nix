@@ -136,7 +136,7 @@ in
           wantedBy = [ "multi-user.target" ];
           script = ''
             mkdir -p /var/lib/data-accumulator
-            chmod 744 /var/lib/data-accumulator
+            chmod 755 /var/lib/data-accumulator
             chown ${config.systemd.services.data-accumulator.serviceConfig.User} /var/lib/data-accumulator
             chgrp ${config.users.groups.dump-dvb-radio.name} /var/lib/data-accumulator
           '';
