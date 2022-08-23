@@ -50,6 +50,18 @@ in
                 root = "${pkgs.wartrammer-frontend}/bin/";
                 index = "index.html";
               };
+              "/result/" = {
+                root = "/var/lib/wartrammer-40k/";
+                extraConfig = ''
+                  autoindex on
+                '';
+              };
+              "/data/" = {
+                root = "/var/lib/data-accumulator/";
+                extraConfig = ''
+                  autoindex on
+                '';
+              };
             };
           };
         };
