@@ -50,13 +50,13 @@ in
                 root = "${pkgs.wartrammer-frontend}/bin/";
                 index = "index.html";
               };
-              "/result/" = {
-                root = "/var/lib/wartrammer-40k/";
+              "/wartrammer-40k/" = {
+                root = "/var/lib/";
                 extraConfig = ''
                   autoindex on;
                 '';
               };
-              "/data/" = {
+              "/formatted.csv" = {
                 root = "/var/lib/data-accumulator/";
                 extraConfig = ''
                   autoindex on;
