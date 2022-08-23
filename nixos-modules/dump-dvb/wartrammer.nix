@@ -53,13 +53,13 @@ in
               "/result/" = {
                 root = "/var/lib/wartrammer-40k/";
                 extraConfig = ''
-                  autoindex on
+                  autoindex on;
                 '';
               };
               "/data/" = {
                 root = "/var/lib/data-accumulator/";
                 extraConfig = ''
-                  autoindex on
+                  autoindex on;
                 '';
               };
             };
