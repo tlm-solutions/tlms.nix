@@ -84,6 +84,10 @@ in
       type = types.str;
       default = "data-accumulator";
     };
+    verbose = mkOption {
+      type = types.bool;
+      default = true;
+    };
     GRPC = mkOption {
       type = types.listOf
         (types.submodule {
@@ -153,7 +157,7 @@ in
           script = ''
             export POSTGRES_TELEGRAMS_PASSWORD=$(cat ${cfg.DB.telegramsPasswordFile})
             export POSTGRES_DVBDUMP_PASSWORD=$(cat ${cfg.DB.dvbPasswordFile})
-            exec ${pkgs.data-accumulator}/bin/data-accumulator --host ${cfg.host} --port ${toString cfg.port} ${if cfg.offline then "--offline" else ""} --verbose&
+            exec ${pkgs.data-accumulator}/bin/data-accumulator --host ${cfg.host} --port ${toString cfg.port} ${if cfg.offline then "--offline" else ""} ${if cfg.verbose then "--verbose" else ""}&
           '';
 
           environment = {

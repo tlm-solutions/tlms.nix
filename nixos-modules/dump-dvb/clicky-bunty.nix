@@ -48,6 +48,10 @@ in
       type = types.str;
       default = "clicky-bunty-server";
     };
+    verbose = mkOption {
+      type = types.bool;
+      default = true;
+    };
   };
 
   config = lib.mkIf cfg.enable {
@@ -64,7 +68,7 @@ in
             export RUST_BACKTRACE=${cfg.rustBacktrace}
             export SALT_PATH=${cfg.saltFile}
             export POSTGRES_PASSWORD=$(cat ${cfg.postgresPasswordFile})
-            exec ${pkgs.clicky-bunty-server}/bin/clicky-bunty-server --host ${cfg.host} --port ${toString cfg.port}&
+            exec ${pkgs.clicky-bunty-server}/bin/clicky-bunty-server --host ${cfg.host} --port ${toString cfg.port} ${if cfg.verbose then "--verbose" else ""}&
           '';
 
           environment = {
