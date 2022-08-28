@@ -58,11 +58,26 @@ in
     environment.systemPackages = [ pkgs.clicky-bunty-server ];
     systemd = {
       services = {
+        "pg-setup-clicky-bunty" = {
+          enable = true;
+          description = "database setup for clicky bunty";
+
+          script = ''
+            ${pkgs.postgresql}/bin/psql -U dvbdump -d dvbdump -a -f ${pkgs.clicky-bunty-setup}/script/setup.sql
+          '';
+
+          serviceConfig = {
+            Type = "oneshot";
+            User = "postgres";
+            Restart = "always";
+          };
+        };
+
         "clicky-bunty-server" = {
           enable = true;
 
           description = "dvbdump managment service";
-          wantedBy = [ "multi-user.target" ];
+          wantedBy = [ "multi-user.target" "pg-setup-clicky-bunty.service" ];
 
           script = ''
             export RUST_BACKTRACE=${cfg.rustBacktrace}
