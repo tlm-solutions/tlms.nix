@@ -69,7 +69,6 @@ in
           serviceConfig = {
             Type = "oneshot";
             User = "postgres";
-            Restart = "always";
           };
         };
 
