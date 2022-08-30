@@ -57,39 +57,37 @@ in
   config = lib.mkIf cfg.enable {
     environment.systemPackages = [ pkgs.clicky-bunty-server ];
     systemd = {
-        "clicky-bunty-server" = {
-          enable = true;
+      "clicky-bunty-server" = {
+        enable = true;
 
-          description = "dvbdump managment service";
-          wantedBy = [ "multi-user.target" ];
+        description = "dvbdump managment service";
+        wantedBy = [ "multi-user.target" ];
 
-          script = ''
-            export RUST_BACKTRACE=${cfg.rustBacktrace}
-            export SALT_PATH=${cfg.saltFile}
-            export POSTGRES_PASSWORD=$(cat ${cfg.postgresPasswordFile})
-            exec ${pkgs.clicky-bunty-server}/bin/clicky-bunty-server --host ${cfg.host} --port ${toString cfg.port} ${if cfg.verbose then "--verbose" else ""}&
-          '';
+        script = ''
+          export RUST_BACKTRACE=${cfg.rustBacktrace}
+          export SALT_PATH=${cfg.saltFile}
+          export POSTGRES_PASSWORD=$(cat ${cfg.postgresPasswordFile})
+          exec ${pkgs.clicky-bunty-server}/bin/clicky-bunty-server --host ${cfg.host} --port ${toString cfg.port} ${if cfg.verbose then "--verbose" else ""}&
+        '';
 
-          environment = {
-            "POSTGRES_HOST" = "${cfg.postgresHost}";
-            "POSTGRES_PORT" = "${toString cfg.postgresPort}";
-          };
+        environment = {
+          "POSTGRES_HOST" = "${cfg.postgresHost}";
+          "POSTGRES_PORT" = "${toString cfg.postgresPort}";
+        };
 
-          serviceConfig = {
-            Type = "forking";
-            User = "clicky-bunty-server";
-            Restart = "always";
-          };
+        serviceConfig = {
+          Type = "forking";
+          User = "clicky-bunty-server";
+          Restart = "always";
         };
       };
     };
-
-    # user accounts for systemd units
-    users.users."${cfg.user}" = {
-      name = cfg.user;
-      isSystemUser = true;
-      group = cfg.group;
-    };
   };
 
+  # user accounts for systemd units
+  users.users."${cfg.user}" = {
+    name = cfg.user;
+    isSystemUser = true;
+    group = cfg.group;
+  };
 }

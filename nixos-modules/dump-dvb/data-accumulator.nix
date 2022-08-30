@@ -127,7 +127,7 @@ in
   config = lib.mkIf cfg.enable {
     users.groups.dump-dvb-radio = {
       name = "dump-dvb-radio";
-      members = [ 
+      members = [
         "wartrammer"
         "data-accumulator"
       ];

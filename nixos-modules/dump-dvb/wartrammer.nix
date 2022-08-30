@@ -83,7 +83,7 @@ in
 
     systemd.services."wartrammer" = {
       enable = true;
-      wantedBy = [ "multi-user.target" "setup-wartrammer.service"];
+      wantedBy = [ "multi-user.target" "setup-wartrammer.service" ];
       script = ''
         exec ${pkgs.wartrammer-backend}/bin/wartrammer-40k --port ${toString cfg.port} &
       '';
