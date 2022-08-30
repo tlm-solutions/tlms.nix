@@ -57,26 +57,11 @@ in
   config = lib.mkIf cfg.enable {
     environment.systemPackages = [ pkgs.clicky-bunty-server ];
     systemd = {
-      services = {
-        "pg-setup-clicky-bunty" = {
-          enable = true;
-          description = "database setup for clicky bunty";
-
-          script = ''
-            ${pkgs.postgresql}/bin/psql -U dvbdump -d dvbdump -a -f ${pkgs.clicky-bunty-setup}/script/setup.sql
-          '';
-
-          serviceConfig = {
-            Type = "oneshot";
-            User = "postgres";
-          };
-        };
-
         "clicky-bunty-server" = {
           enable = true;
 
           description = "dvbdump managment service";
-          wantedBy = [ "multi-user.target" "pg-setup-clicky-bunty.service" ];
+          wantedBy = [ "multi-user.target" ];
 
           script = ''
             export RUST_BACKTRACE=${cfg.rustBacktrace}

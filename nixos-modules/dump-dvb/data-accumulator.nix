@@ -161,6 +161,7 @@ in
           '';
 
           environment = {
+            "RUST_BACKTRACE" = if cfg.verbose then "1" else "0";
             "POSTGRES_HOST" = "${cfg.DB.host}";
             "POSTGRES_PORT" = "${toString cfg.DB.port}";
             "DATABASE_BACKEND" = "${cfg.DB.backend}";
