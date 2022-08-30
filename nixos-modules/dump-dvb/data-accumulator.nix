@@ -157,12 +157,12 @@ in
           script = ''
             export POSTGRES_TELEGRAMS_PASSWORD=$(cat ${cfg.DB.telegramsPasswordFile})
             export POSTGRES_DVBDUMP_PASSWORD=$(cat ${cfg.DB.dvbPasswordFile})
-            exec ${pkgs.data-accumulator}/bin/data-accumulator --host ${cfg.host} --port ${toString cfg.port} ${if cfg.offline then "--offline" else ""} ${if cfg.verbose then "--verbose" else ""}&
+            exec ${pkgs.data-accumulator}/bin/data-accumulator --host ${cfg.host} --port ${toString cfg.port} ${if cfg.offline then "--offline" else ""}&
           '';
 
           environment = {
             "RUST_LOG" = "${cfg.log_level}";
-            "RUST_BACKTRACE" = if cfg.verbose then "1" else "0";
+            "RUST_BACKTRACE" = if (cfg.log_level == "info") then "0" else "1";
             "POSTGRES_HOST" = "${cfg.DB.host}";
             "POSTGRES_PORT" = "${toString cfg.DB.port}";
             "DATABASE_BACKEND" = "${cfg.DB.backend}";
