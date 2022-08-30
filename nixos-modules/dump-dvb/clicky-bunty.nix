@@ -82,12 +82,12 @@ in
         };
       };
     };
-  };
 
-  # user accounts for systemd units
-  users.users."${cfg.user}" = {
-    name = cfg.user;
-    isSystemUser = true;
-    group = cfg.group;
+    # user accounts for systemd units
+    users.users."${cfg.user}" = {
+      name = cfg.user;
+      isSystemUser = true;
+      group = cfg.group;
+    };
   };
 }
