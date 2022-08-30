@@ -84,9 +84,9 @@ in
       type = types.str;
       default = "data-accumulator";
     };
-    verbose = mkOption {
-      type = types.bool;
-      default = true;
+    log_level = mkOption {
+      type = types.str;
+      default = "info";
     };
     GRPC = mkOption {
       type = types.listOf
@@ -161,6 +161,7 @@ in
           '';
 
           environment = {
+            "RUST_LOG" = "${cfg.log_level}";
             "RUST_BACKTRACE" = if cfg.verbose then "1" else "0";
             "POSTGRES_HOST" = "${cfg.DB.host}";
             "POSTGRES_PORT" = "${toString cfg.DB.port}";
