@@ -56,7 +56,7 @@ in
 
   config = lib.mkIf cfg.enable {
     environment.systemPackages = [ pkgs.clicky-bunty-server ];
-    systemd = {
+    systemd.services = {
       "clicky-bunty-server" = {
         enable = true;
 
