@@ -29,6 +29,10 @@ in
       default = false;
       description = ''runs telegram-decoder in offline mode used for mobile stations'';
     };
+    logLevel = mkOption {
+      type = types.str;
+      default = "info";
+    };
   };
 
 
@@ -52,6 +56,7 @@ in
       script = "exec ${pkgs.telegram-decoder}/bin/telegram-decode --config ${cfg.configFile} --server ${(builtins.concatStringsSep " " cfg.server)} ${if cfg.offline then "--offline" else ""}&";
 
       environment = {
+        RUST_LOG = cfg.logLevel;
         AUTHENTICATION_TOKEN_PATH = cfg.authTokenFile;
       };
 
