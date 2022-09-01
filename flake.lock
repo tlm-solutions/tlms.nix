@@ -97,11 +97,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1662033181,
-        "narHash": "sha256-BTRowWLftOP7GMivgUmpqNx7skNwrEYOPtO8JQ9kbvE=",
+        "lastModified": 1662042037,
+        "narHash": "sha256-HXVfklCStSY6aBKuYIlBI6VBmgWco8HDW2W+S78ckZg=",
         "owner": "dump-dvb",
         "repo": "decode-server",
-        "rev": "fc16f8b8f8fc8accdb313b299e79baf0675c1b89",
+        "rev": "f72058be8478b3e4e2ac1bb1c43a0a365bef8b36",
         "type": "github"
       },
       "original": {
