@@ -64,7 +64,7 @@ in
         wantedBy = [ "multi-user.target" ];
 
         script = ''
-          exec ${pkgs.clicky-bunty-server}/bin/clicky-bunty-server --host ${cfg.host} --port ${toString cfg.port} ${if cfg.verbose then "--verbose" else ""}&
+          exec ${pkgs.clicky-bunty-server}/bin/clicky-bunty-server --host ${cfg.host} --port ${toString cfg.port}&
         '';
 
         environment = {
