@@ -48,9 +48,9 @@ in
       type = types.str;
       default = "clicky-bunty-server";
     };
-    verbose = mkOption {
-      type = types.bool;
-      default = true;
+    log_level = mkOption {
+      type = types.str;
+      default = "info";
     };
   };
 
@@ -64,13 +64,14 @@ in
         wantedBy = [ "multi-user.target" ];
 
         script = ''
-          export RUST_BACKTRACE=${cfg.rustBacktrace}
-          export SALT_PATH=${cfg.saltFile}
-          export POSTGRES_PASSWORD=$(cat ${cfg.postgresPasswordFile})
           exec ${pkgs.clicky-bunty-server}/bin/clicky-bunty-server --host ${cfg.host} --port ${toString cfg.port} ${if cfg.verbose then "--verbose" else ""}&
         '';
 
         environment = {
+          "RUST_BACKTRACE" = "${cfg.rustBacktrace}";
+          "SALT_PATH" = "${cfg.saltFile}";
+          "POSTGRES_PASSWORD_FILE" = "${cfg.postgresPasswordFile}";
+          "RUST_LOG" = "${cfg.log_level}";
           "POSTGRES_HOST" = "${cfg.postgresHost}";
           "POSTGRES_PORT" = "${toString cfg.postgresPort}";
         };
