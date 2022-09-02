@@ -23,36 +23,7 @@ in
         To which port should data-accumulator bind.
       '';
     };
-    R09CsvFile = mkOption {
-      type = types.str;
-      default = "";
-      description = ''
-        If set, to which CSV files to write captured R09 telegrams
-      '';
-    };
-    RawFile = mkOption {
-      type = types.str;
-      default = "";
-      description = ''
-        If set, to which csv file to write captured unparsed telegrams
-      '';
-    };
-    offline = mkOption {
-      type = types.bool;
-      default = false;
-      description = ''
-        If set to true this will run in war tramming mode with out any authentication
-      '';
-    };
-
-    DB = {
-      backend = mkOption {
-        type = types.enum [ "POSTGRES" "CSVFILE" ];
-        default = "POSTGRES";
-        description = ''
-          Which database to use
-        '';
-      };
+    database = {
       host = mkOption {
         type = types.str;
         default = "127.0.0.1";
@@ -67,11 +38,7 @@ in
           Database port
         '';
       };
-      telegramsPasswordFile = mkOption {
-        type = types.either types.path types.string;
-        default = "";
-      };
-      dvbPasswordFile = mkOption {
+      passwordFile = mkOption {
         type = types.either types.path types.string;
         default = "";
       };
@@ -155,19 +122,15 @@ in
           wantedBy = [ "multi-user.target" "setup-data-accumulator.service" ];
 
           script = ''
-            export POSTGRES_TELEGRAMS_PASSWORD=$(cat ${cfg.DB.telegramsPasswordFile})
-            export POSTGRES_DVBDUMP_PASSWORD=$(cat ${cfg.DB.dvbPasswordFile})
-            exec ${pkgs.data-accumulator}/bin/data-accumulator --host ${cfg.host} --port ${toString cfg.port} ${if cfg.offline then "--offline" else ""}&
+            exec ${pkgs.data-accumulator}/bin/data-accumulator --host ${cfg.host} --port ${toString cfg.port}&
           '';
 
           environment = {
+            "POSTGRES_PASSWORD_PATH" = "${cfg.database.passwordFile}";
             "RUST_LOG" = "${cfg.log_level}";
             "RUST_BACKTRACE" = if (cfg.log_level == "info") then "0" else "1";
-            "POSTGRES_HOST" = "${cfg.DB.host}";
-            "POSTGRES_PORT" = "${toString cfg.DB.port}";
-            "DATABASE_BACKEND" = "${cfg.DB.backend}";
-            "CSV_FILE_R09" = "${cfg.R09CsvFile}";
-            "CSV_FILE_RAW" = "${cfg.RawFile}";
+            "POSTGRES_HOST" = "${cfg.database.host}";
+            "POSTGRES_PORT" = "${toString cfg.database.port}";
           } // (lib.foldl
             (x: y:
               lib.mergeAttrs x { "GRPC_HOST_${y.name}" = "${y.schema}://${y.host}:${toString y.port}"; })
