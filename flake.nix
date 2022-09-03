@@ -1,15 +1,13 @@
 {
   inputs = {
-    nixpkgs.url = github:NixOS/nixpkgs/nixos-22.05;
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-22.05";
 
     naersk = {
-      url = github:nix-community/naersk;
+      url = "github:nix-community/naersk";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    utils = {
-      url = github:numtide/flake-utils;
-    };
+    utils = { url = "github:numtide/flake-utils"; };
 
     stops-no-flake = {
       url = "github:dump-dvb/stop-names";
@@ -17,13 +15,13 @@
     };
 
     radio-conf = {
-      url = github:dump-dvb/radio-conf;
+      url = "github:dump-dvb/radio-conf";
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.utils.follows = "utils";
     };
 
     data-accumulator = {
-      url = github:dump-dvb/data-accumulator;
+      url = "github:dump-dvb/data-accumulator";
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.naersk.follows = "naersk";
       inputs.utils.follows = "utils";
@@ -31,7 +29,7 @@
     };
 
     decode-server = {
-      url = github:dump-dvb/decode-server;
+      url = "github:dump-dvb/decode-server";
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.naersk.follows = "naersk";
       inputs.utils.follows = "utils";
@@ -39,44 +37,44 @@
     };
 
     dvb-api = {
-      url = github:dump-dvb/dvb-api;
+      url = "github:dump-dvb/dvb-api";
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.naersk.follows = "naersk";
       inputs.utils.follows = "utils";
     };
 
     funnel = {
-      url = github:dump-dvb/funnel;
+      url = "github:dump-dvb/funnel";
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.utils.follows = "utils";
     };
 
     windshield = {
-      url = github:dump-dvb/windshield;
+      url = "github:dump-dvb/windshield";
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.utils.follows = "utils";
     };
 
     docs = {
-      url = github:dump-dvb/documentation;
+      url = "github:dump-dvb/documentation";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
     wartrammer = {
-      url = github:dump-dvb/wartrammer-40k;
+      url = "github:dump-dvb/wartrammer-40k";
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.naersk.follows = "naersk";
       inputs.utils.follows = "utils";
     };
 
     click = {
-      url = github:dump-dvb/click;
+      url = "github:dump-dvb/click";
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.utils.follows = "utils";
     };
 
     clicky-bunty-server = {
-      url = github:dump-dvb/clicky-bunty-server;
+      url = "github:dump-dvb/clicky-bunty-server";
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.naersk.follows = "naersk";
       inputs.utils.follows = "utils";
@@ -84,31 +82,25 @@
     };
 
     stops = {
-      url = github:dump-dvb/stop-names;
+      url = "github:dump-dvb/stop-names";
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.naersk.follows = "naersk";
       inputs.utils.follows = "utils";
     };
 
+    dump-dvb-rs = {
+      url = "github:dump-dvb/dump-dvb.rs";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
-  outputs =
-    inputs@{ self
-    , click
-    , clicky-bunty-server
-    , data-accumulator
-    , decode-server
-    , docs
-    , dvb-api
-    , funnel
-    , nixpkgs
-    , radio-conf
-    , wartrammer
-    , windshield
-    , stops
-    , ...
-    }:
-    {
+  outputs = inputs@{ self, click, clicky-bunty-server, data-accumulator
+    , decode-server, docs, dvb-api, funnel, nixpkgs, radio-conf, wartrammer
+    , windshield, stops, dump-dvb-rs, ... }:
+    let
+      system =
+        "x86_64-linux"; # builtins.currentSystem doesn't work here apparently
+    in {
       # composes all of our overlays into one
       overlays.default = nixpkgs.lib.composeManyExtensions [
         click.overlays.default
@@ -128,5 +120,8 @@
         dump-dvb = import ./nixos-modules/dump-dvb self;
         default = self.nixosModules.dump-dvb;
       };
+
+      packages.${system}."run-database-migration" =
+        dump-dvb-rs.packages.${system}.run-migration;
     };
 }
