@@ -39,11 +39,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1662226123,
-        "narHash": "sha256-uTfhAJFRrE0dEhFwXXbvljpObHNCO8MefBZ+rTJq84M=",
+        "lastModified": 1662226329,
+        "narHash": "sha256-rezaxPalWmQuunuAmNkgoRsUoTTvxgHhgcDBE7iKq+k=",
         "owner": "dump-dvb",
         "repo": "clicky-bunty-server",
-        "rev": "5706c2e62dcf3f4fa297e28cecebe43ec0224ea2",
+        "rev": "fff60f122a28ea6f319db5c1d5b565523abf469c",
         "type": "github"
       },
       "original": {
