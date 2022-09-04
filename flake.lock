@@ -110,26 +110,6 @@
         "type": "github"
       }
     },
-    "docs": {
-      "inputs": {
-        "nixpkgs": [
-          "nixpkgs"
-        ]
-      },
-      "locked": {
-        "lastModified": 1662221632,
-        "narHash": "sha256-5JV2JYS2QEyB0cewIOLl7iqpcagyCP/expnExyi5E/Q=",
-        "owner": "dump-dvb",
-        "repo": "documentation",
-        "rev": "4c6a265ef894a57da94b753e7e5464c143ed2a53",
-        "type": "github"
-      },
-      "original": {
-        "owner": "dump-dvb",
-        "repo": "documentation",
-        "type": "github"
-      }
-    },
     "dump-dvb-rs": {
       "inputs": {
         "nixpkgs": [
@@ -137,11 +117,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1662217018,
-        "narHash": "sha256-ehuiNyp0Uc+zRaTVZG+Bo9rhn3px7uTEHh/6Qh9qY8s=",
+        "lastModified": 1662312677,
+        "narHash": "sha256-zUmc8x+eQCjYO+Hbh+4R/iDUlOvTi2uXvp9R00lzy90=",
         "owner": "dump-dvb",
         "repo": "dump-dvb.rs",
-        "rev": "e25a510217122e924ca5b5b57b4518735d2ed580",
+        "rev": "79ec772792c45e2fa36997ae36cf0f4bc9f7a102",
         "type": "github"
       },
       "original": {
@@ -303,7 +283,6 @@
         "clicky-bunty-server": "clicky-bunty-server",
         "data-accumulator": "data-accumulator",
         "decode-server": "decode-server",
-        "docs": "docs",
         "dump-dvb-rs": "dump-dvb-rs",
         "dvb-api": "dvb-api",
         "funnel": "funnel",

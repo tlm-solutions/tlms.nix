@@ -55,11 +55,6 @@
       inputs.utils.follows = "utils";
     };
 
-    docs = {
-      url = "github:dump-dvb/documentation";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
     wartrammer = {
       url = "github:dump-dvb/wartrammer-40k";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -95,7 +90,7 @@
   };
 
   outputs = inputs@{ self, click, clicky-bunty-server, data-accumulator
-    , decode-server, docs, dvb-api, funnel, nixpkgs, radio-conf, wartrammer
+    , decode-server, dvb-api, funnel, nixpkgs, radio-conf, wartrammer
     , windshield, stops, dump-dvb-rs, ... }:
     let
       system =
@@ -107,7 +102,6 @@
         clicky-bunty-server.overlays.default
         data-accumulator.overlays.default
         decode-server.overlays.default
-        docs.overlays.default
         dvb-api.overlays.default
         funnel.overlays.default
         radio-conf.overlays.default
