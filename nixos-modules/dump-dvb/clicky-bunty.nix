@@ -70,7 +70,7 @@ in
         environment = {
           "RUST_BACKTRACE" = "${cfg.rustBacktrace}";
           "SALT_PATH" = "${cfg.saltFile}";
-          "POSTGRES_PASSWORD_FILE" = "${cfg.postgresPasswordFile}";
+          "POSTGRES_PASSWORD_PATH" = "${cfg.postgresPasswordFile}";
           "RUST_LOG" = "${cfg.log_level}";
           "POSTGRES_HOST" = "${cfg.postgresHost}";
           "POSTGRES_PORT" = "${toString cfg.postgresPort}";
