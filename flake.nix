@@ -87,11 +87,17 @@
       url = "github:dump-dvb/dump-dvb.rs";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    tracy = {
+      url = "github:dump-dvb/tracy";
+      inputs.naersk.follows = "naersk";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = inputs@{ self, click, clicky-bunty-server, data-accumulator
     , decode-server, dvb-api, funnel, nixpkgs, radio-conf, wartrammer
-    , windshield, stops, dump-dvb-rs, ... }:
+    , windshield, stops, dump-dvb-rs, tracy, ... }:
     let
       system =
         "x86_64-linux"; # builtins.currentSystem doesn't work here apparently
@@ -108,6 +114,7 @@
         stops.overlays.default
         wartrammer.overlays.default
         windshield.overlays.default
+        tracy.overlays.default
       ];
 
       nixosModules = {

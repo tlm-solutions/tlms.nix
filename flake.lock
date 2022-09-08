@@ -288,7 +288,8 @@
         "radio-conf": "radio-conf",
         "stops": "stops",
         "stops-no-flake": "stops-no-flake",
-        "utils": "utils",
+        "tracy": "tracy",
+        "utils": "utils_2",
         "wartrammer": "wartrammer",
         "windshield": "windshield"
       }
@@ -353,7 +354,46 @@
         "type": "github"
       }
     },
+    "tracy": {
+      "inputs": {
+        "naersk": [
+          "naersk"
+        ],
+        "nixpkgs": [
+          "nixpkgs"
+        ],
+        "utils": "utils"
+      },
+      "locked": {
+        "lastModified": 1662642695,
+        "narHash": "sha256-CRI2iDWNLDU8xviGNNQYiGlpOxvn2wsjKtKxQM0AxM4=",
+        "owner": "dump-dvb",
+        "repo": "tracy",
+        "rev": "5c66d0b44b0925119c5a053ad02a5cf830cdc269",
+        "type": "github"
+      },
+      "original": {
+        "owner": "dump-dvb",
+        "repo": "tracy",
+        "type": "github"
+      }
+    },
     "utils": {
+      "locked": {
+        "lastModified": 1659877975,
+        "narHash": "sha256-zllb8aq3YO3h8B/U0/J1WBgAL8EX5yWf5pMj3G0NAmc=",
+        "owner": "numtide",
+        "repo": "flake-utils",
+        "rev": "c0e246b9b83f637f4681389ecabcb2681b4f3af0",
+        "type": "github"
+      },
+      "original": {
+        "owner": "numtide",
+        "repo": "flake-utils",
+        "type": "github"
+      }
+    },
+    "utils_2": {
       "locked": {
         "lastModified": 1659877975,
         "narHash": "sha256-zllb8aq3YO3h8B/U0/J1WBgAL8EX5yWf5pMj3G0NAmc=",

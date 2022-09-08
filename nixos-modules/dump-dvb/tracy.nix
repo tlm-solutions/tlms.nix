@@ -3,24 +3,24 @@ let
   cfg = config.dump-dvb.dataAccumulator;
 in
 {
-  options.dump-dvb.dataAccumulator = with lib; {
+  options.dump-dvb.tracy = with lib; {
     enable = mkOption {
       type = types.bool;
       default = false;
-      description = ''Wether to enable data accumulator service'';
+      description = ''Wether to enable tracy service'';
     };
     host = mkOption {
       type = types.str;
       default = "0.0.0.0";
       description = ''
-        To which IP data-accumulator should bind.
+        To which IP tracy should bind.
       '';
     };
     port = mkOption {
       type = types.port;
       default = 8080;
       description = ''
-        To which port should data-accumulator bind.
+        To which port should tracy bind.
       '';
     };
     database = {
@@ -45,49 +45,15 @@ in
     };
     user = mkOption {
       type = types.str;
-      default = "data-accumulator";
+      default = "tracy";
     };
     group = mkOption {
       type = types.str;
-      default = "data-accumulator";
+      default = "tracy";
     };
     log_level = mkOption {
       type = types.str;
       default = "info";
-    };
-    GRPC = mkOption {
-      type = types.listOf
-        (types.submodule {
-          options.schema = mkOption {
-            type = types.enum [ "http" "https" ];
-            default = "http";
-            description = ''
-              schema to connect to GRPC
-            '';
-          };
-          options.name = mkOption {
-            type = types.str;
-            default = "";
-            description = ''
-              GRPC name
-            '';
-          };
-          options.host = mkOption {
-            type = types.str;
-            default = "127.0.0.1";
-            description = ''
-              GRPC: schema://hostname
-            '';
-          };
-          options.port = mkOption {
-            type = types.port;
-            default = 50051;
-            description = ''
-              GRPC port
-            '';
-          };
-        });
-      default = [ ];
     };
   };
 
@@ -97,19 +63,20 @@ in
       members = [
         "wartrammer"
         "data-accumulator"
+        "tracy"
       ];
       gid = 1501;
     };
 
     systemd = {
       services = {
-        "setup-data-accumulator" = {
+        "setup-tracy" = {
           wantedBy = [ "multi-user.target" ];
           script = ''
-            mkdir -p /var/lib/data-accumulator
-            chmod 755 /var/lib/data-accumulator
-            chown ${config.systemd.services.data-accumulator.serviceConfig.User} /var/lib/data-accumulator
-            chgrp ${config.users.groups.dump-dvb-radio.name} /var/lib/data-accumulator
+            mkdir -p /var/lib/tracy
+            chmod 755 /var/lib/tracy
+            chown ${config.systemd.services.tracy.serviceConfig.User} /var/lib/tracy
+            chgrp ${config.users.groups.dump-dvb-radio.name} /var/lib/tracy
           '';
 
           serviceConfig = {
@@ -117,12 +84,12 @@ in
           };
         };
 
-        "data-accumulator" = {
+        "tracy" = {
           enable = true;
-          wantedBy = [ "multi-user.target" "setup-data-accumulator.service" ];
+          wantedBy = [ "multi-user.target" "setup-tracy.service" ];
 
           script = ''
-            exec ${pkgs.data-accumulator}/bin/data-accumulator --host ${cfg.host} --port ${toString cfg.port}&
+            exec ${pkgs.tracy}/bin/tracy --host ${cfg.host} --port ${toString cfg.port}&
           '';
 
           environment = {
@@ -131,11 +98,7 @@ in
             "RUST_BACKTRACE" = if (cfg.log_level == "info") then "0" else "1";
             "POSTGRES_HOST" = "${cfg.database.host}";
             "POSTGRES_PORT" = "${toString cfg.database.port}";
-          } // (lib.foldl
-            (x: y:
-              lib.mergeAttrs x { "GRPC_HOST_${y.name}" = "${y.schema}://${y.host}:${toString y.port}"; })
-            { }
-            cfg.GRPC);
+          };
 
           serviceConfig = {
             Type = "forking";
@@ -149,7 +112,7 @@ in
     # user accounts for systemd units
     users.users."${cfg.user}" = {
       name = "${cfg.user}";
-      description = "This guy runs data-accumulator";
+      description = "This guy runs tracy";
       isNormalUser = false;
       isSystemUser = true;
       group = cfg.group;
