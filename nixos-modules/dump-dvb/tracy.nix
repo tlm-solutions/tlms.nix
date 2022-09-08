@@ -1,6 +1,6 @@
 { pkgs, config, lib, ... }:
 let
-  cfg = config.dump-dvb.dataAccumulator;
+  cfg = config.dump-dvb.tracy;
 in
 {
   options.dump-dvb.tracy = with lib; {
@@ -116,7 +116,7 @@ in
       isNormalUser = false;
       isSystemUser = true;
       group = cfg.group;
-      uid = 1501;
+      uid = 1502;
       extraGroups = [ config.users.groups."dump-dvb-radio".name ];
     };
   };
