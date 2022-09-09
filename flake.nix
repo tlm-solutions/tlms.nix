@@ -9,11 +9,6 @@
 
     utils = { url = "github:numtide/flake-utils"; };
 
-    stops-no-flake = {
-      url = "github:dump-dvb/stop-names";
-      flake = false;
-    };
-
     radio-conf = {
       url = "github:dump-dvb/radio-conf";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -25,7 +20,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.naersk.follows = "naersk";
       inputs.utils.follows = "utils";
-      inputs.stops.follows = "stops-no-flake";
     };
 
     decode-server = {
@@ -33,7 +27,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.naersk.follows = "naersk";
       inputs.utils.follows = "utils";
-      inputs.stops.follows = "stops-no-flake";
     };
 
     dvb-api = {
@@ -73,7 +66,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.naersk.follows = "naersk";
       inputs.utils.follows = "utils";
-      inputs.stops.follows = "stops-no-flake";
     };
 
     stops = {
