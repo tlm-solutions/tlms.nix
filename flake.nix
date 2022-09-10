@@ -111,6 +111,7 @@
 
       nixosModules = {
         dump-dvb = import ./nixos-modules/dump-dvb self;
+        disk-module = import ./nixos-modules/disk-module;
         default = self.nixosModules.dump-dvb;
       };
 
