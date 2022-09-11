@@ -21,7 +21,7 @@ in
     };
     authTokenFile = mkOption {
       type = types.either types.str types.path;
-      default = "";
+      default = "/etc/telegram-decoder/token";
       description = ''Path to telegram-decoder auth token'';
     };
     offline = mkOption {
@@ -30,7 +30,7 @@ in
       description = ''runs telegram-decoder in offline mode used for mobile stations'';
     };
     logLevel = mkOption {
-      type = types.str;
+      type = types.enum [ "info" "warn" "error" "debug" "trace" ];
       default = "info";
     };
   };
