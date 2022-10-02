@@ -255,11 +255,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1662762828,
-        "narHash": "sha256-gOIGsnCHRx/64V1Lt3UO5JG1RjZwzDTIRSQFWRSBfnc=",
+        "lastModified": 1664628798,
+        "narHash": "sha256-IUjjtHIpLqcf8MsjJpxPynsroqA7GQtt7j/Sg3o4/rU=",
         "owner": "dump-dvb",
         "repo": "radio-conf",
-        "rev": "a90150ac128bc1851025f7b4e6d825c1f9ede83f",
+        "rev": "67fafb01ffac773d9615aaa3a85af2d84b732c4f",
         "type": "github"
       },
       "original": {
