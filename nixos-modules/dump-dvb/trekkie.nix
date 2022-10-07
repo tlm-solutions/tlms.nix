@@ -1,26 +1,26 @@
 { pkgs, config, lib, ... }:
 let
-  cfg = config.dump-dvb.tracy;
+  cfg = config.dump-dvb.trekkie;
 in
 {
-  options.dump-dvb.tracy = with lib; {
+  options.dump-dvb.trekkie = with lib; {
     enable = mkOption {
       type = types.bool;
       default = false;
-      description = ''Wether to enable tracy service'';
+      description = ''Wether to enable trekkie service'';
     };
     host = mkOption {
       type = types.str;
       default = "0.0.0.0";
       description = ''
-        To which IP tracy should bind.
+        To which IP trekkie should bind.
       '';
     };
     port = mkOption {
       type = types.port;
       default = 8080;
       description = ''
-        To which port should tracy bind.
+        To which port should trekkie bind.
       '';
     };
     database = {
@@ -45,11 +45,11 @@ in
     };
     user = mkOption {
       type = types.str;
-      default = "tracy";
+      default = "trekkie";
     };
     group = mkOption {
       type = types.str;
-      default = "tracy";
+      default = "trekkie";
     };
     log_level = mkOption {
       type = types.str;
@@ -63,20 +63,20 @@ in
       members = [
         "wartrammer"
         "data-accumulator"
-        "tracy"
+        "trekkie"
       ];
       gid = 1501;
     };
 
     systemd = {
       services = {
-        "setup-tracy" = {
+        "setup-trekkie" = {
           wantedBy = [ "multi-user.target" ];
           script = ''
-            mkdir -p /var/lib/tracy
-            chmod 755 /var/lib/tracy
-            chown ${config.systemd.services.tracy.serviceConfig.User} /var/lib/tracy
-            chgrp ${config.users.groups.dump-dvb-radio.name} /var/lib/tracy
+            mkdir -p /var/lib/trekkie
+            chmod 755 /var/lib/trekkie
+            chown ${config.systemd.services.trekkie.serviceConfig.User} /var/lib/trekkie
+            chgrp ${config.users.groups.dump-dvb-radio.name} /var/lib/trekkie
           '';
 
           serviceConfig = {
@@ -84,12 +84,12 @@ in
           };
         };
 
-        "tracy" = {
+        "trekkie" = {
           enable = true;
-          wantedBy = [ "multi-user.target" "setup-tracy.service" ];
+          wantedBy = [ "multi-user.target" "setup-trekkie.service" ];
 
           script = ''
-            exec ${pkgs.tracy}/bin/tracy --host ${cfg.host} --port ${toString cfg.port}&
+            exec ${pkgs.trekkie}/bin/trekkie --host ${cfg.host} --port ${toString cfg.port}&
           '';
 
           environment = {
@@ -112,7 +112,7 @@ in
     # user accounts for systemd units
     users.users."${cfg.user}" = {
       name = "${cfg.user}";
-      description = "This guy runs tracy";
+      description = "This guy runs trekkie";
       isNormalUser = false;
       isSystemUser = true;
       group = cfg.group;

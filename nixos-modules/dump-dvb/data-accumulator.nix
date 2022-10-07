@@ -97,7 +97,7 @@ in
       members = [
         "wartrammer"
         "data-accumulator"
-        "tracy"
+        "trekkie"
       ];
       gid = 1501;
     };
