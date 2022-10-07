@@ -89,7 +89,7 @@ in
           wantedBy = [ "multi-user.target" "setup-trekkie.service" ];
 
           script = ''
-            exec ${pkgs.trekkie}/bin/trekkie --host ${cfg.host} --port ${toString cfg.port}&
+            exec ${pkgs.trekkie}/bin/trekkie --api-host ${cfg.host} --port ${toString cfg.port}&
           '';
 
           environment = {
