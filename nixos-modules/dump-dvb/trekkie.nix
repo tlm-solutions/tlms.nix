@@ -23,6 +23,13 @@ in
         To which port should trekkie bind.
       '';
     };
+    saltPath = mkOption {
+      type = types.either types.path types.string;
+      default = "/run/secrets/salt_path";
+      description = ''
+        File from which the password salt can be taken
+      '';
+    };
     database = {
       host = mkOption {
         type = types.str;
@@ -98,6 +105,7 @@ in
             "RUST_BACKTRACE" = if (cfg.log_level == "info") then "0" else "1";
             "POSTGRES_HOST" = "${cfg.database.host}";
             "POSTGRES_PORT" = "${toString cfg.database.port}";
+            "SALT_PATH" = "${cfg.saltPath}";
           };
 
           serviceConfig = {
