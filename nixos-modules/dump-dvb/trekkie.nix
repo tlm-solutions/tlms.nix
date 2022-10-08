@@ -123,7 +123,7 @@ in
             "POSTGRES_PORT" = "${toString cfg.database.port}";
             "SALT_PATH" = "${cfg.saltPath}";
             "REDIS_PORT" = "${toString cfg.redis.port}";
-            "REDIS_HOST" = "${cfg.redi.host}";
+            "REDIS_HOST" = "${cfg.redis.host}";
           };
 
           serviceConfig = {
