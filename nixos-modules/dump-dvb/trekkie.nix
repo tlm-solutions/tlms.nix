@@ -58,7 +58,7 @@ in
       type = types.str;
       default = "trekkie";
     };
-    log_level = mkOption {
+    logLevel = mkOption {
       type = types.str;
       default = "info";
     };
@@ -101,8 +101,8 @@ in
 
           environment = {
             "POSTGRES_PASSWORD_PATH" = "${cfg.database.passwordFile}";
-            "RUST_LOG" = "${cfg.log_level}";
-            "RUST_BACKTRACE" = if (cfg.log_level == "info") then "0" else "1";
+            "RUST_LOG" = "${cfg.logLevel}";
+            "RUST_BACKTRACE" = if (cfg.logLevel == "info") then "0" else "1";
             "POSTGRES_HOST" = "${cfg.database.host}";
             "POSTGRES_PORT" = "${toString cfg.database.port}";
             "SALT_PATH" = "${cfg.saltPath}";
