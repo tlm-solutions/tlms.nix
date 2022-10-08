@@ -100,6 +100,11 @@ in
             chmod 755 /var/lib/trekkie
             chown ${config.systemd.services.trekkie.serviceConfig.User} /var/lib/trekkie
             chgrp ${config.users.groups.dump-dvb-radio.name} /var/lib/trekkie
+            mkdir -p /var/lib/trekkie/gpx
+            chmod 755 /var/lib/trekkie/gpx
+            chown ${config.systemd.services.trekkie.serviceConfig.User} /var/lib/trekkie/gpx
+            chgrp ${config.users.groups.dump-dvb-radio.name} /var/lib/trekkie/gpx
+
           '';
 
           serviceConfig = {
