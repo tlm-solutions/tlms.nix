@@ -50,6 +50,22 @@ in
         default = "";
       };
     };
+    redis = {
+      host = mkOption {
+        type = types.str;
+        default = "127.0.0.1";
+        description = ''
+          redis host
+        '';
+      };
+      port = mkOption {
+        type = types.port;
+        default = 6379;
+        description = ''
+          redis port
+        '';
+      };
+    };
     user = mkOption {
       type = types.str;
       default = "trekkie";
@@ -106,6 +122,8 @@ in
             "POSTGRES_HOST" = "${cfg.database.host}";
             "POSTGRES_PORT" = "${toString cfg.database.port}";
             "SALT_PATH" = "${cfg.saltPath}";
+            "REDIS_PORT" = "${toString cfg.redis.port}";
+            "REDIS_HOST" = "${cfg.redi.host}";
           };
 
           serviceConfig = {
