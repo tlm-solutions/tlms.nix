@@ -398,11 +398,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1665426292,
-        "narHash": "sha256-LVAtiZsScyZgfArDuB683QAr/B8haaT+M1EPwwngt/U=",
+        "lastModified": 1665432412,
+        "narHash": "sha256-HR+rrMO1xrPRi0zENLdoHLWgAqiUEU54/LuWCgaQBfo=",
         "owner": "dump-dvb",
         "repo": "wartrammer-40k",
-        "rev": "da495ec6fedcdb85618306feda0f6936fd13499a",
+        "rev": "40a953007bd95f0256eb93f7bbb0a03a4f18690d",
         "type": "github"
       },
       "original": {
