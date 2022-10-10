@@ -47,7 +47,7 @@ in
                 proxyPass = "http://127.0.0.1:${toString cfg.port}";
               };
               "/" = {
-                root = "${pkgs.wartrammer-frontend}/";
+                root = pkgs.wartrammer-frontend;
                 index = "index.html";
               };
               "/wartrammer-40k/" = {
