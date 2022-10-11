@@ -92,6 +92,8 @@ in
         "PATH_DATA" = "/var/lib/wartrammer-40k/times.json";
         "IN_DATA" = "/var/lib/wartrammer-40k/formatted.csv";
         "OUT_DATA" = "/var/lib/wartrammer-40k/out.csv";
+        "CSV_FILE_R09" = "/var/lib/wartrammer-40k/formatted.csv";
+        "CSV_FILE_RAW" = "/var/lib/wartrammer-40k/raw.csv";
         "RUST_LOG" = "debug";
       };
 
