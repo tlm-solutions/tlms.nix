@@ -47,7 +47,7 @@ in
                 proxyPass = "http://127.0.0.1:${toString cfg.port}";
               };
               "/" = {
-                root = "${pkgs.wartrammer-frontend}/bin/";
+                root = pkgs.wartrammer-frontend;
                 index = "index.html";
               };
               "/wartrammer-40k/" = {
@@ -94,6 +94,7 @@ in
         "OUT_DATA" = "/var/lib/wartrammer-40k/out.csv";
         "CSV_FILE_R09" = "/var/lib/wartrammer-40k/formatted.csv";
         "CSV_FILE_RAW" = "/var/lib/wartrammer-40k/raw.csv";
+        "RUST_LOG" = "debug";
       };
 
       serviceConfig = {
