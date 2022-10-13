@@ -139,6 +139,11 @@ in
         };
       };
     };
+    services.redis.servers."trekkie" = {
+      enable = true;
+      port = cfg.redis.port;
+      bind = cfg.redis.host;
+    };
 
     # user accounts for systemd units
     users.users."${cfg.user}" = {
