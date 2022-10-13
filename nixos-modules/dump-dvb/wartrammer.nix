@@ -1,4 +1,4 @@
-{ config, pkgs, lib, ... }:
+{ self, config, pkgs, lib, ... }:
 let
   cfg = config.dump-dvb.wartrammer;
 in
@@ -47,7 +47,8 @@ in
                 proxyPass = "http://127.0.0.1:${toString cfg.port}";
               };
               "/" = {
-                root = pkgs.wartrammer-frontend;
+                # wartrammer frontend needs to be build on x86_64-linux, but the output is generic html/js
+                root = self.inputs.wartrammer.packages."x86_64-linux".wartrammer-frontend;
                 index = "index.html";
               };
               "/wartrammer-40k/" = {
