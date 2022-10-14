@@ -32,6 +32,13 @@ in
         Which group wartrammer user is in
       '';
     };
+    region = mkOption {
+      type = types.int;
+      default = -1;
+      description = ''
+        Which region does wartrammer run in
+      '';
+    };
   };
 
   config = lib.mkIf cfg.enable {
@@ -85,7 +92,7 @@ in
       enable = true;
       wantedBy = [ "multi-user.target" "setup-wartrammer.service" ];
       script = ''
-        exec ${pkgs.wartrammer-backend}/bin/wartrammer-40k --port ${toString cfg.port} &
+        exec ${pkgs.wartrammer-backend}/bin/wartrammer-40k --port ${toString cfg.port} --region ${toString cfg.region} &
       '';
 
       environment = {
