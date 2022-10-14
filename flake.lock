@@ -245,6 +245,22 @@
         "type": "github"
       }
     },
+    "nixpkgs-unstable": {
+      "locked": {
+        "lastModified": 1665643254,
+        "narHash": "sha256-IBVWNJxGCsshwh62eRfR6+ry3bSXmulB3VQRzLQo3hk=",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "ba187fbdc5e35322c7dff556ef2c47bddfd6e8d7",
+        "type": "github"
+      },
+      "original": {
+        "owner": "NixOS",
+        "ref": "nixos-unstable",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
     "radio-conf": {
       "inputs": {
         "nixpkgs": [
@@ -393,16 +409,17 @@
         "nixpkgs": [
           "nixpkgs"
         ],
+        "nixpkgs-unstable": "nixpkgs-unstable",
         "utils": [
           "utils"
         ]
       },
       "locked": {
-        "lastModified": 1665683684,
-        "narHash": "sha256-quJgnhqsTvBjM1cxn4JA9QJcbwy+N8T1QiX1y6mbR+Q=",
+        "lastModified": 1665748017,
+        "narHash": "sha256-3+6WrTzOKVGNxQ3OMu8NJwsKJsZDrNBb9VUYFgRzdFg=",
         "owner": "dump-dvb",
         "repo": "wartrammer-40k",
-        "rev": "79493ae0a27f99fe1af86e7aee323c7c6948f196",
+        "rev": "e7c024487a7e76f78af9ae9cc5dad4a69e25403f",
         "type": "github"
       },
       "original": {
