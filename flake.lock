@@ -415,11 +415,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1665748017,
-        "narHash": "sha256-3+6WrTzOKVGNxQ3OMu8NJwsKJsZDrNBb9VUYFgRzdFg=",
+        "lastModified": 1665754243,
+        "narHash": "sha256-O8oaP64q/NyO5uOunWD3Y/aEC8D+0u70pxJBCzjHIJA=",
         "owner": "dump-dvb",
         "repo": "wartrammer-40k",
-        "rev": "e7c024487a7e76f78af9ae9cc5dad4a69e25403f",
+        "rev": "f9f09dcc9eaed9baeaccd63c10f932ea5ccc9085",
         "type": "github"
       },
       "original": {
