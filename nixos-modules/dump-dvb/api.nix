@@ -38,6 +38,11 @@ in
       default = "dvb-api";
       description = "as which group dvb-api should run";
     };
+    logLevel = mkOption {
+      type = types.str;
+      default = "info";
+      description = "log level";
+    };
   };
   config = lib.mkIf cfg.enable {
     systemd = {
@@ -49,6 +54,7 @@ in
           script = "exec ${pkgs.dvb-api}/bin/dvb-api &";
 
           environment = {
+            "RUST_LOG" = "${cfg.logLevel}";
             "GRPC_HOST" = "${cfg.GRPC.host}:${toString cfg.GRPC.port}";
             "HTTP_PORT" = "${toString cfg.port}";
             "GRAPH_FILE" = "${cfg.graphFile}";
