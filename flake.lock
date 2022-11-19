@@ -438,11 +438,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1668598274,
-        "narHash": "sha256-6ybHt7kt7mThrtn5SYtcSMcZDOFWnQijwC8rTSoZioo=",
+        "lastModified": 1668880405,
+        "narHash": "sha256-3kHoCjKpNFmSFw+ZsiRCc0i2N875haquWayMAs7/Jcw=",
         "owner": "dump-dvb",
         "repo": "windshield",
-        "rev": "d2a53aa2022a35f4e7764dea42256187f0da43ae",
+        "rev": "ee676e2386958fc8b123353760152566ba4802a2",
         "type": "github"
       },
       "original": {
