@@ -28,6 +28,12 @@ in
         default = 9002;
       };
     };
+    metrics = {
+      port = mkOption {
+        type = types.port;
+        default = 9003;
+      };
+    };
     user = mkOption {
       type = types.str;
       default = "funnel";
@@ -50,6 +56,7 @@ in
           environment = {
             "GRPC_PORT" = "${toString cfg.GRPC.port}";
             "WEBSOCKET_PORT" = "${toString cfg.defaultWebsocket.port}";
+            "EXPORTER_PORT" = "${toString cfg.metrics.port}";
             #"GRPC_HOST" = "${cfg.GRPC.host}:${toString cfg.GRPC.port}";
             #"DEFAULT_WEBSOCKET_HOST" = "${cfg.defaultWebsocket.host}:${toString cfg.defaultWebsocket.port}";
             "GRAPH_FILE" = "${config.dump-dvb.graphJson}";
