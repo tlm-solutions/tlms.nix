@@ -56,8 +56,8 @@ in
       script = "exec ${pkgs.telegram-decoder}/bin/telegram-decoder --config ${cfg.configFile} --server ${(builtins.concatStringsSep " " cfg.server)} ${if cfg.offline then "--offline" else ""}&";
 
       environment = {
-        RUST_LOG = cfg.logLevel;
-        AUTHENTICATION_TOKEN_PATH = cfg.authTokenFile;
+        "RUST_LOG" = "${cfg.logLevel}";
+        "AUTHENTICATION_TOKEN_PATH" = "${cfg.authTokenFile}";
       };
 
       serviceConfig = {
