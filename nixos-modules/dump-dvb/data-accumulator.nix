@@ -91,7 +91,8 @@ in
             '';
           };
         });
-      default = [ ];
+        default = [ ];
+        description = ''list of grpc endpoint where data-accumulator should send data to'';
     };
   };
 
