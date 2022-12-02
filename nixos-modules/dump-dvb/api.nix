@@ -7,26 +7,32 @@ in
     enable = mkOption {
       type = types.bool;
       default = false;
+      description = "enabling the service";
     };
     GRPC.host = mkOption {
       type = types.str;
       default = "127.0.0.1";
+      description = "grpc host";
     };
     GRPC.port = mkOption {
       type = types.int;
       default = 50051;
+      description = "grpc port";
     };
     port = mkOption {
       type = types.port;
       default = 9001;
+      description = "port of the api";
     };
     graphFile = mkOption {
       type = types.either types.path types.str;
       default = "";
+      description = "location of the graph file";
     };
     stopsFile = mkOption {
       type = types.either types.path types.str;
       default = "";
+      description = "location of the stops file";
     };
     user = mkOption {
       type = types.str;

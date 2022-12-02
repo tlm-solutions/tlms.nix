@@ -48,6 +48,7 @@ in
       passwordFile = mkOption {
         type = types.either types.path types.string;
         default = "";
+        description = ''password file from which the postgres password can be read'';
       };
     };
     redis = {
@@ -69,14 +70,17 @@ in
     user = mkOption {
       type = types.str;
       default = "trekkie";
+      description = ''systemd user'';
     };
     group = mkOption {
       type = types.str;
       default = "trekkie";
+      description = ''group of systemd user'';
     };
     logLevel = mkOption {
       type = types.str;
       default = "info";
+      description = ''log level of the application'';
     };
   };
 

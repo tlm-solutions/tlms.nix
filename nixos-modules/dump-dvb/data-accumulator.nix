@@ -41,19 +41,23 @@ in
       passwordFile = mkOption {
         type = types.either types.path types.string;
         default = "";
+        description = ''password file from which the postgres password can be read'';
       };
     };
     user = mkOption {
       type = types.str;
       default = "data-accumulator";
+      description = ''systemd user'';
     };
     group = mkOption {
       type = types.str;
       default = "data-accumulator";
+      description = ''group of systemd user'';
     };
     log_level = mkOption {
       type = types.str;
       default = "info";
+      description = ''log level of the application'';
     };
     GRPC = mkOption {
       type = types.listOf

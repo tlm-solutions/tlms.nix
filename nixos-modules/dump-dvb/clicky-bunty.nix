@@ -14,43 +14,52 @@ in
     rustBacktrace = mkOption {
       type = types.str;
       default = "FULL";
+      description = ''rust backtrace''
     };
     host = mkOption {
       type = types.str;
       default = "127.0.0.1";
+      description = ''host of clicky bunty''
     };
-
     port = mkOption {
       type = types.port;
       default = 5070;
+      description = ''port of clicky bunty''
     };
     saltFile = mkOption {
       type = types.either types.str types.path;
       default = "";
+      description = ''file from where the salt can be read''
     };
     postgresPasswordFile = mkOption {
       type = types.either types.str types.path;
       default = "";
+      description = ''file from where the postgres password can be read''
     };
     postgresHost = mkOption {
       type = types.str;
       default = "127.0.0.1";
+      description = ''file from where the postgres password can be read''
     };
     postgresPort = mkOption {
       type = types.int;
       default = 5070;
+      description = ''port of the postgres database''
     };
     user = mkOption {
       type = types.str;
       default = "clicky-bunty-server";
+      description = ''systemd user''
     };
     group = mkOption {
       type = types.str;
       default = "clicky-bunty-server";
+      description = ''group of systemd user''
     };
     log_level = mkOption {
       type = types.str;
       default = "info";
+      description = ''log level of the application''
     };
   };
 
