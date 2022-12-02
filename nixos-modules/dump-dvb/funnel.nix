@@ -7,40 +7,48 @@ in
     enable = mkOption {
       type = types.bool;
       default = false;
+      description = "enabeling funnel or not";
     };
     GRPC = {
       host = mkOption {
         type = types.str;
         default = "127.0.0.1";
+        description = "on which address the grpc server should bind to";
       };
       port = mkOption {
         type = types.port;
         default = 50052;
+        description = "on which port the grpc server should bind to";
       };
     };
     defaultWebsocket = {
       host = mkOption {
         type = types.str;
         default = "127.0.0.1";
+        description = "host of the websocket";
       };
       port = mkOption {
         type = types.port;
         default = 9002;
+        description = "port of the websocket";
       };
     };
     metrics = {
       port = mkOption {
         type = types.port;
         default = 9003;
+        description = "prometheus metrics port";
       };
     };
     user = mkOption {
       type = types.str;
       default = "funnel";
+      description = "systemd user";
     };
     group = mkOption {
       type = types.str;
       default = "funnel";
+      description = "group of systemd user";
     };
   };
 

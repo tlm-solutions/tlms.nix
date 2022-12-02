@@ -28,14 +28,17 @@ in
     RF = mkOption {
       type = types.int;
       default = 14;
+      description = "";
     };
     IF = mkOption {
       type = types.int;
       default = 32;
+      description = "";
     };
     BB = mkOption {
       type = types.int;
       default = 42;
+      description = "";
     };
     user = mkOption {
       type = types.str;

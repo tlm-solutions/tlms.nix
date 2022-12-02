@@ -32,6 +32,7 @@ in
     logLevel = mkOption {
       type = types.enum [ "info" "warn" "error" "debug" "trace" ];
       default = "info";
+      description = "under which logLevel the service should run";
     };
   };
 
