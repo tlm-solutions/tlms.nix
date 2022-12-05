@@ -74,7 +74,7 @@ in
             #"DEFAULT_WEBSOCKET_HOST" = "${cfg.defaultWebsocket.host}:${toString cfg.defaultWebsocket.port}";
             "GRAPH_FILE" = "${config.dump-dvb.graphJson}";
             "STOPS_FILE" = "${config.dump-dvb.stopsJson}";
-            "API_DOMAIN" = "${config.dump-dvb.apiAddress}";
+            "API_DOMAIN" = "https://${cfg.apiAddress}";
           };
 
           serviceConfig = {
