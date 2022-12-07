@@ -1,4 +1,4 @@
-{ pkgs, config, lib, ... }:
+{ou pkgs, config, lib, ... }:
 let
   cfg = config.dump-dvb.funnel;
 in
