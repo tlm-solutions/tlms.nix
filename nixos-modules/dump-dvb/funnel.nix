@@ -44,6 +44,11 @@ in
         default = 9003;
         description = "prometheus metrics port";
       };
+      host = mkOption {
+        type = types.str;
+        default = "127.0.0.1";
+        description = "address prometheus should bind to";
+      };
     };
     user = mkOption {
       type = types.str;
@@ -69,9 +74,7 @@ in
           environment = {
             "GRPC_PORT" = "${toString cfg.GRPC.port}";
             "WEBSOCKET_PORT" = "${toString cfg.defaultWebsocket.port}";
-            "EXPORTER_PORT" = "${toString cfg.metrics.port}";
-            #"GRPC_HOST" = "${cfg.GRPC.host}:${toString cfg.GRPC.port}";
-            #"DEFAULT_WEBSOCKET_HOST" = "${cfg.defaultWebsocket.host}:${toString cfg.defaultWebsocket.port}";
+            "EXPORTER_HOST" = "${cfg.metrics.host}:${toString cfg.metrics.port}";
             "GRAPH_FILE" = "${config.dump-dvb.graphJson}";
             "STOPS_FILE" = "${config.dump-dvb.stopsJson}";
             "API_DOMAIN" = "http://${cfg.apiAddress}";
