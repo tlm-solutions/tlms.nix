@@ -12,4 +12,5 @@
       echo file binary-dist $diskImage >> $out/nix-support/hydra-build-products
     '';
   };
+  fileSystems."/".autoResize = true;
 }
