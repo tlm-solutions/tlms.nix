@@ -49,6 +49,11 @@ in
       default = "info";
       description = "log level";
     };
+    workerCount = mkOption {
+      type = types.int;
+      default = 4;
+      description = "amount of worker threads used";
+    };
   };
   config = lib.mkIf cfg.enable {
     systemd = {
@@ -65,6 +70,7 @@ in
             "HTTP_PORT" = "${toString cfg.port}";
             "GRAPH_FILE" = "${cfg.graphFile}";
             "STOPS_FILE" = "${cfg.stopsFile}";
+            "WORKER_COUNT" = "${cfg.workerCount}";
           };
 
           serviceConfig = {
