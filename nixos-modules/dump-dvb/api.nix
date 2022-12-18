@@ -70,7 +70,7 @@ in
             "HTTP_PORT" = "${toString cfg.port}";
             "GRAPH_FILE" = "${cfg.graphFile}";
             "STOPS_FILE" = "${cfg.stopsFile}";
-            "WORKER_COUNT" = "${cfg.workerCount}";
+            "WORKER_COUNT" = "${toString cfg.workerCount}";
           };
 
           serviceConfig = {
