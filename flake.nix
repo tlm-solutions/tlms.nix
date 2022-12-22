@@ -61,8 +61,8 @@
       inputs.utils.follows = "utils";
     };
 
-    clicky-bunty-server = {
-      url = "github:dump-dvb/clicky-bunty-server";
+    datacare = {
+      url = "github:dump-dvb/datacare";
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.naersk.follows = "naersk";
       inputs.utils.follows = "utils";
@@ -87,7 +87,7 @@
     };
   };
 
-  outputs = inputs@{ self, click, clicky-bunty-server, data-accumulator
+  outputs = inputs@{ self, click, datacare, data-accumulator
     , decode-server, dvb-api, funnel, nixpkgs, radio-conf, wartrammer
     , windshield, stops, dump-dvb-rs, trekkie, ... }:
     let
@@ -97,7 +97,7 @@
       # composes all of our overlays into one
       overlays.default = nixpkgs.lib.composeManyExtensions [
         click.overlays.default
-        clicky-bunty-server.overlays.default
+        datacare.overlays.default
         data-accumulator.overlays.default
         decode-server.overlays.default
         dvb-api.overlays.default

@@ -1,14 +1,14 @@
 { pkgs, config, lib, ... }:
 let
-  cfg = config.dump-dvb.clickyBuntyServer;
+  cfg = config.dump-dvb.datacare;
 in
 {
-  options.dump-dvb.clickyBuntyServer = with lib; {
+  options.dump-dvb.datacare = with lib; {
     enable = mkOption {
       type = types.bool;
       default = false;
       description = ''
-        Wether to enable clicky-bunty-server: dump-dvb colorful and clicky registration tool
+        Wether to enable datacare: dump-dvb colorful and clicky registration tool
       '';
     };
     rustBacktrace = mkOption {
@@ -19,12 +19,12 @@ in
     host = mkOption {
       type = types.str;
       default = "127.0.0.1";
-      description = ''host of clicky bunty'';
+      description = ''host of datacare'';
     };
     port = mkOption {
       type = types.port;
       default = 5070;
-      description = ''port of clicky bunty'';
+      description = ''port of datacare'';
     };
     saltFile = mkOption {
       type = types.either types.str types.path;
@@ -48,12 +48,12 @@ in
     };
     user = mkOption {
       type = types.str;
-      default = "clicky-bunty-server";
+      default = "datacare";
       description = ''systemd user'';
     };
     group = mkOption {
       type = types.str;
-      default = "clicky-bunty-server";
+      default = "datacare";
       description = ''group of systemd user'';
     };
     log_level = mkOption {
@@ -64,16 +64,16 @@ in
   };
 
   config = lib.mkIf cfg.enable {
-    environment.systemPackages = [ pkgs.clicky-bunty-server ];
+    environment.systemPackages = [ pkgs.datacare ];
     systemd.services = {
-      "clicky-bunty-server" = {
+      "datacare" = {
         enable = true;
 
         description = "dvbdump managment service";
         wantedBy = [ "multi-user.target" ];
 
         script = ''
-          exec ${pkgs.clicky-bunty-server}/bin/clicky-bunty-server --host ${cfg.host} --port ${toString cfg.port}&
+          exec ${pkgs.datacare}/bin/datacare --host ${cfg.host} --port ${toString cfg.port}&
         '';
 
         environment = {
@@ -87,7 +87,7 @@ in
 
         serviceConfig = {
           Type = "forking";
-          User = "clicky-bunty-server";
+          User = "datacare";
           Restart = "always";
         };
       };

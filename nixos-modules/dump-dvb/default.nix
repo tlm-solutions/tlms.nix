@@ -3,7 +3,7 @@ self:
   imports = [
     ./api.nix
     ./binary-cache.nix
-    ./clicky-bunty.nix
+    ./datacare.nix
     ./data-accumulator.nix
     ./funnel.nix
     ./gnuradio.nix
