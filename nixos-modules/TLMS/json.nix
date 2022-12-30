@@ -1,6 +1,6 @@
 { lib, pkgs, config, ... }:
 with lib; {
-  options.dump-dvb = {
+  options.TLMS = {
     stopsJson = mkOption {
       type = types.str;
       default = "";

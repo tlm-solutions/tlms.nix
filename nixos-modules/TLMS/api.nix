@@ -1,9 +1,9 @@
 { pkgs, config, lib, ... }:
 let
-  cfg = config.dump-dvb.api;
+  cfg = config.TLMS.api;
 in
 {
-  options.dump-dvb.api = with lib; {
+  options.TLMS.api = with lib; {
     enable = mkOption {
       type = types.bool;
       default = false;

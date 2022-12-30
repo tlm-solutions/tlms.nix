@@ -1,9 +1,9 @@
 {pkgs, config, lib, ... }:
 let
-  cfg = config.dump-dvb.funnel;
+  cfg = config.TLMS.funnel;
 in
 {
-  options.dump-dvb.funnel = with lib; {
+  options.TLMS.funnel = with lib; {
     enable = mkOption {
       type = types.bool;
       default = false;
@@ -75,8 +75,8 @@ in
             "GRPC_PORT" = "${toString cfg.GRPC.port}";
             "WEBSOCKET_PORT" = "${toString cfg.defaultWebsocket.port}";
             "EXPORTER_HOST" = "${cfg.metrics.host}:${toString cfg.metrics.port}";
-            "GRAPH_FILE" = "${config.dump-dvb.graphJson}";
-            "STOPS_FILE" = "${config.dump-dvb.stopsJson}";
+            "GRAPH_FILE" = "${config.TLMS.graphJson}";
+            "STOPS_FILE" = "${config.TLMS.stopsJson}";
             "API_DOMAIN" = "http://${cfg.apiAddress}";
           };
 

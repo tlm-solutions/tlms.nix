@@ -1,13 +1,13 @@
 { pkgs, config, lib, ... }:
 let
-  cfg = config.dump-dvb.gnuradio;
+  cfg = config.TLMS.gnuradio;
 in
 {
-  options.dump-dvb.gnuradio = with lib; {
+  options.TLMS.gnuradio = with lib; {
     enable = mkOption {
       type = types.bool;
       default = false;
-      description = ''Wether to enable dump-dvb gnuradio reciever'';
+      description = ''Wether to enable TLMS gnuradio reciever'';
     };
     device = mkOption {
       type = types.str;

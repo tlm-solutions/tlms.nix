@@ -9,87 +9,87 @@
 
     utils = { url = "github:numtide/flake-utils"; };
 
-    radio-conf = {
-      url = "github:dump-dvb/radio-conf";
+    gnuradio-decoder = {
+      url = "github:tlm-solutions/gnuradio-decoder";
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.utils.follows = "utils";
     };
 
     data-accumulator = {
-      url = "github:dump-dvb/data-accumulator";
+      url = "github:tlm-solutions/data-accumulator";
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.naersk.follows = "naersk";
       inputs.utils.follows = "utils";
     };
 
-    decode-server = {
-      url = "github:dump-dvb/decode-server";
+    telegram-decoder = {
+      url = "github:tlm-solutions/telegram-decoder";
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.naersk.follows = "naersk";
       inputs.utils.follows = "utils";
     };
 
     dvb-api = {
-      url = "github:dump-dvb/dvb-api";
+      url = "github:tlm-solutions/dvb-api";
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.naersk.follows = "naersk";
       inputs.utils.follows = "utils";
     };
 
     funnel = {
-      url = "github:dump-dvb/funnel";
+      url = "github:tlm-solutions/funnel";
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.utils.follows = "utils";
     };
 
     windshield = {
-      url = "github:dump-dvb/windshield";
+      url = "github:tlm-solutions/windshield";
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.utils.follows = "utils";
     };
 
     wartrammer = {
-      url = "github:dump-dvb/wartrammer-40k";
+      url = "github:tlm-solutions/wartrammer-40k";
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.naersk.follows = "naersk";
       inputs.utils.follows = "utils";
     };
 
     click = {
-      url = "github:dump-dvb/click";
+      url = "github:tlm-solutions/click";
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.utils.follows = "utils";
     };
 
     datacare = {
-      url = "github:dump-dvb/datacare";
+      url = "github:tlm-solutions/datacare";
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.naersk.follows = "naersk";
       inputs.utils.follows = "utils";
     };
 
     stops = {
-      url = "github:dump-dvb/stop-names";
+      url = "github:tlm-solutions/stop-names";
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.naersk.follows = "naersk";
       inputs.utils.follows = "utils";
     };
 
-    dump-dvb-rs = {
-      url = "github:dump-dvb/dump-dvb.rs";
+    tlms-rs = {
+      url = "github:tlm-solutions/tlms.rs";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
     trekkie = {
-      url = "github:dump-dvb/trekkie";
+      url = "github:tlm-solutions/trekkie";
       inputs.naersk.follows = "naersk";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
 
   outputs = inputs@{ self, click, datacare, data-accumulator
-    , decode-server, dvb-api, funnel, nixpkgs, radio-conf, wartrammer
-    , windshield, stops, dump-dvb-rs, trekkie, ... }:
+    , telegram-decoder, dvb-api, funnel, nixpkgs, gnuradio-decoder, wartrammer
+    , windshield, stops, tlms-rs, trekkie, ... }:
     let
       system =
         "x86_64-linux"; # builtins.currentSystem doesn't work here apparently
@@ -99,10 +99,10 @@
         click.overlays.default
         datacare.overlays.default
         data-accumulator.overlays.default
-        decode-server.overlays.default
+        telegram-decoder.overlays.default
         dvb-api.overlays.default
         funnel.overlays.default
-        radio-conf.overlays.default
+        gnuradio-decoder.overlays.default
         stops.overlays.default
         wartrammer.overlays.default
         windshield.overlays.default
@@ -110,12 +110,12 @@
       ];
 
       nixosModules = {
-        dump-dvb = import ./nixos-modules/dump-dvb self;
+        TLMS = import ./nixos-modules/TLMS self;
         disk-module = import ./nixos-modules/disk-module;
-        default = self.nixosModules.dump-dvb;
+        default = self.nixosModules.TLMS;
       };
 
       packages.${system}."run-database-migration" =
-        dump-dvb-rs.packages.${system}.run-migration;
+        tlms-rs.packages.${system}.run-migration;
     };
 }

@@ -1,9 +1,9 @@
 { config, pkgs, lib, ... }:
 let
-  cfg = config.dump-dvb.wartrammer;
+  cfg = config.TLMS.wartrammer;
 in
 {
-  options.dump-dvb.wartrammer = with lib; {
+  options.TLMS.wartrammer = with lib; {
     enable = mkOption {
       type = types.bool;
       default = false;

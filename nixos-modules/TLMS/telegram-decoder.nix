@@ -1,18 +1,18 @@
 { config, lib, pkgs, ... }:
 let
-  cfg = config.dump-dvb.telegramDecoder;
+  cfg = config.TLMS.telegramDecoder;
 in
 {
-  options.dump-dvb.telegramDecoder = with lib; {
+  options.TLMS.telegramDecoder = with lib; {
     enable = mkOption {
       type = types.bool;
       default = false;
-      description = ''Wether to enable dump-dvb telegram-decoder'';
+      description = ''Wether to enable TLMS telegram-decoder'';
     };
     server = mkOption {
       type = types.listOf types.str;
       default = [ "https://dump.dvb.solutions/" ];
-      description = ''URL of the dump-dvb websocket'';
+      description = ''URL of the TLMS websocket'';
     };
     configFile = mkOption {
       type = types.either types.str types.path;

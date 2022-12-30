@@ -1,9 +1,9 @@
 { pkgs, config, lib, ... }:
 let
-  cfg = config.dump-dvb.trekkie;
+  cfg = config.TLMS.trekkie;
 in
 {
-  options.dump-dvb.trekkie = with lib; {
+  options.TLMS.trekkie = with lib; {
     enable = mkOption {
       type = types.bool;
       default = false;
@@ -85,8 +85,8 @@ in
   };
 
   config = lib.mkIf cfg.enable {
-    users.groups.dump-dvb-radio = {
-      name = "dump-dvb-radio";
+    users.groups.TLMS-radio = {
+      name = "TLMS-radio";
       members = [
         "wartrammer"
         "data-accumulator"
@@ -103,11 +103,11 @@ in
             mkdir -p /var/lib/trekkie
             chmod 755 /var/lib/trekkie
             chown ${config.systemd.services.trekkie.serviceConfig.User} /var/lib/trekkie
-            chgrp ${config.users.groups.dump-dvb-radio.name} /var/lib/trekkie
+            chgrp ${config.users.groups.TLMS-radio.name} /var/lib/trekkie
             mkdir -p /var/lib/trekkie/gpx
             chmod 755 /var/lib/trekkie/gpx
             chown ${config.systemd.services.trekkie.serviceConfig.User} /var/lib/trekkie/gpx
-            chgrp ${config.users.groups.dump-dvb-radio.name} /var/lib/trekkie/gpx
+            chgrp ${config.users.groups.TLMS-radio.name} /var/lib/trekkie/gpx
 
           '';
 
@@ -157,7 +157,7 @@ in
       isSystemUser = true;
       group = cfg.group;
       uid = 1502;
-      extraGroups = [ config.users.groups."dump-dvb-radio".name ];
+      extraGroups = [ config.users.groups."TLMS-radio".name ];
     };
   };
 }

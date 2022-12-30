@@ -1,9 +1,9 @@
 { pkgs, config, lib, ... }:
 let
-  cfg = config.dump-dvb.dataAccumulator;
+  cfg = config.TLMS.dataAccumulator;
 in
 {
-  options.dump-dvb.dataAccumulator = with lib; {
+  options.TLMS.dataAccumulator = with lib; {
     enable = mkOption {
       type = types.bool;
       default = false;
@@ -97,8 +97,8 @@ in
   };
 
   config = lib.mkIf cfg.enable {
-    users.groups.dump-dvb-radio = {
-      name = "dump-dvb-radio";
+    users.groups.TLMS-radio = {
+      name = "TLMS-radio";
       members = [
         "wartrammer"
         "data-accumulator"
@@ -115,7 +115,7 @@ in
             mkdir -p /var/lib/data-accumulator
             chmod 755 /var/lib/data-accumulator
             chown ${config.systemd.services.data-accumulator.serviceConfig.User} /var/lib/data-accumulator
-            chgrp ${config.users.groups.dump-dvb-radio.name} /var/lib/data-accumulator
+            chgrp ${config.users.groups.TLMS-radio.name} /var/lib/data-accumulator
           '';
 
           serviceConfig = {
@@ -160,7 +160,7 @@ in
       isSystemUser = true;
       group = cfg.group;
       uid = 1501;
-      extraGroups = [ config.users.groups."dump-dvb-radio".name ];
+      extraGroups = [ config.users.groups."TLMS-radio".name ];
     };
   };
 }

@@ -1,14 +1,14 @@
 { pkgs, config, lib, ... }:
 let
-  cfg = config.dump-dvb.datacare;
+  cfg = config.TLMS.datacare;
 in
 {
-  options.dump-dvb.datacare = with lib; {
+  options.TLMS.datacare = with lib; {
     enable = mkOption {
       type = types.bool;
       default = false;
       description = ''
-        Wether to enable datacare: dump-dvb colorful and clicky registration tool
+        Wether to enable datacare: TLMS colorful and clicky registration tool
       '';
     };
     rustBacktrace = mkOption {
