@@ -58,7 +58,8 @@ in
     };
     log_level = mkOption {
       type = types.str;
-      default = "info";
+      # this is a little weird because if want to see all the correct value would be trace
+      default = "main";
       description = ''log level of the application'';
     };
   };
