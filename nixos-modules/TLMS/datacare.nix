@@ -59,7 +59,7 @@ in
     log_level = mkOption {
       type = types.str;
       # this is a little weird because if want to see all the correct value would be trace
-      default = "main";
+      default = "datacare";
       description = ''log level of the application'';
     };
   };
