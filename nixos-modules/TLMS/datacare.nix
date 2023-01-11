@@ -31,20 +31,32 @@ in
       default = "";
       description = ''file from where the salt can be read'';
     };
-    postgresPasswordFile = mkOption {
-      type = types.either types.str types.path;
-      default = "";
-      description = ''file from where the postgres password can be read'';
-    };
-    postgresHost = mkOption {
-      type = types.str;
-      default = "127.0.0.1";
-      description = ''file from where the postgres password can be read'';
-    };
-    postgresPort = mkOption {
-      type = types.int;
-      default = 5070;
-      description = ''port of the postgres database'';
+    database = {
+      passwordFile = mkOption {
+        type = types.either types.str types.path;
+        default = "";
+        description = ''file from where the postgres password can be read'';
+      };
+      host = mkOption {
+        type = types.str;
+        default = "127.0.0.1";
+        description = ''file from where the postgres password can be read'';
+      };
+      port = mkOption {
+        type = types.int;
+        default = 5070;
+        description = ''port of the postgres database'';
+      };
+      user = mkOption {
+        type = types.str;
+        default = "datacare";
+        description = ''user of the postgres database'';
+      };
+      database = mkOption {
+        type = types.str;
+        default = "tlms";
+        description = ''postgres database that should be used'';
+      };
     };
     user = mkOption {
       type = types.str;
@@ -80,10 +92,12 @@ in
         environment = {
           "RUST_BACKTRACE" = "${cfg.rustBacktrace}";
           "SALT_PATH" = "${cfg.saltFile}";
-          "POSTGRES_PASSWORD_PATH" = "${cfg.postgresPasswordFile}";
           "RUST_LOG" = "${cfg.log_level}";
-          "POSTGRES_HOST" = "${cfg.postgresHost}";
-          "POSTGRES_PORT" = "${toString cfg.postgresPort}";
+          "POSTGRES_HOST" = "${cfg.database.host}";
+          "POSTGRES_PORT" = "${toString cfg.database.port}";
+          "POSTGRES_USER" = "${toString cfg.database.user}";
+          "POSTGRES_DATABASE" = "${toString cfg.database.database}";
+          "POSTGRES_PASSWORD_PATH" = "${cfg.database.passwordFile}";
         };
 
         serviceConfig = {
