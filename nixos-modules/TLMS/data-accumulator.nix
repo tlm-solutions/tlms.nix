@@ -38,6 +38,20 @@ in
           Database port
         '';
       };
+      user = mkOption {
+        type = types.str;
+        default = "data-accumulator";
+        description = ''
+          user for postgres
+        '';
+      };
+      database = mkOption {
+        type = types.str;
+        default = "tlms";
+        description = ''
+          postgres database to use
+        '';
+      };
       passwordFile = mkOption {
         type = types.either types.path types.string;
         default = "";
@@ -137,6 +151,8 @@ in
             "RUST_BACKTRACE" = if (cfg.log_level == "info") then "0" else "1";
             "POSTGRES_HOST" = "${cfg.database.host}";
             "POSTGRES_PORT" = "${toString cfg.database.port}";
+            "POSTGRES_USER" = "${toString cfg.database.user}";
+            "POSTGRES_DATABASE" = "${toString cfg.database.database}";
           } // (lib.foldl
             (x: y:
               lib.mergeAttrs x { "GRPC_HOST_${y.name}" = "${y.schema}://${y.host}:${toString y.port}"; })

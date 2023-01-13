@@ -36,11 +36,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1672266234,
-        "narHash": "sha256-EYxLJWJBOglOCjSwYvDlsq38FjaGJRfGMLS8shxr1sU=",
+        "lastModified": 1673645467,
+        "narHash": "sha256-XxU2UrAbNb5nkrlsJ7iAzMKq0bUCHS/4V85VbG3qMlQ=",
         "owner": "tlm-solutions",
         "repo": "data-accumulator",
-        "rev": "9ef2e1073bc88d35672323958ccd00ed52808176",
+        "rev": "7a10780df80d0df395eef80e54b2c587df7e55d1",
         "type": "github"
       },
       "original": {
@@ -62,11 +62,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1673446354,
-        "narHash": "sha256-v835L294XR9FKWrl/yyTAwEjuv86dZsUbbPx1MotS8A=",
+        "lastModified": 1673448417,
+        "narHash": "sha256-ATMeg3xQebT0HqgQGiLSuajMZ0UJ+1bZQTOYzwQAttA=",
         "owner": "tlm-solutions",
         "repo": "datacare",
-        "rev": "9a73fda089a863147e630a7b8237bbf5624218c5",
+        "rev": "4f7f55678fbe09b25def049f9ac75869dbb35d86",
         "type": "github"
       },
       "original": {
@@ -455,11 +455,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1671893969,
-        "narHash": "sha256-sBQnt/PfUReXJJ89JHrVeO0VvEVYQpYnhtadXQVm4eM=",
+        "lastModified": 1673561813,
+        "narHash": "sha256-Z7PRlYf0PNAFldwzwP1/PoVDiLiZO8Tzv1h2wEiNTNs=",
         "owner": "tlm-solutions",
         "repo": "windshield",
-        "rev": "100e62ad1a63cecfcde6e01d1814742bdec805e7",
+        "rev": "20d5eded76ab8cd504c0cfa6c1c6fcb0e9e143eb",
         "type": "github"
       },
       "original": {
