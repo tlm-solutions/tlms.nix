@@ -36,11 +36,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1673645467,
-        "narHash": "sha256-XxU2UrAbNb5nkrlsJ7iAzMKq0bUCHS/4V85VbG3qMlQ=",
+        "lastModified": 1674231339,
+        "narHash": "sha256-P4O4r6aynQvgYOi0l03smnd3BEtkUk6GUXMEZBRZPls=",
         "owner": "tlm-solutions",
         "repo": "data-accumulator",
-        "rev": "7a10780df80d0df395eef80e54b2c587df7e55d1",
+        "rev": "317006d012ac919a4e488514feed652228f9ec9d",
         "type": "github"
       },
       "original": {
@@ -62,11 +62,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1673448417,
-        "narHash": "sha256-ATMeg3xQebT0HqgQGiLSuajMZ0UJ+1bZQTOYzwQAttA=",
+        "lastModified": 1673894214,
+        "narHash": "sha256-0vl60g8TDugT5gb5QUN+wEU+kdaGrMvzo7D912SKzqo=",
         "owner": "tlm-solutions",
         "repo": "datacare",
-        "rev": "4f7f55678fbe09b25def049f9ac75869dbb35d86",
+        "rev": "31ecbccb2ad8c544f1476060a22ba93b49db247f",
         "type": "github"
       },
       "original": {
