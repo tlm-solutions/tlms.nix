@@ -62,7 +62,7 @@ in
           enable = true;
           wantedBy = [ "multi-user.target" ];
 
-          script = "exec ${pkgs.dvb-api}/bin/dvb-api &";
+          script = "exec ${pkgs.state-api}/bin/state-api &";
 
           environment = {
             "RUST_LOG" = "${cfg.logLevel}";
