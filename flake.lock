@@ -252,8 +252,7 @@
         "stops": "stops",
         "telegram-decoder": "telegram-decoder",
         "tlms-rs": "tlms-rs",
-        "trekkie": "trekkie",
-        "utils": "utils_2",
+        "utils": "utils",
         "wartrammer": "wartrammer",
         "windshield": "windshield"
       }
@@ -364,46 +363,7 @@
         "type": "github"
       }
     },
-    "trekkie": {
-      "inputs": {
-        "naersk": [
-          "naersk"
-        ],
-        "nixpkgs": [
-          "nixpkgs"
-        ],
-        "utils": "utils"
-      },
-      "locked": {
-        "lastModified": 1676050324,
-        "narHash": "sha256-lI6xmzurIvvMwhPtgBrsDMBuentBAZawWU3NIcEEK8Q=",
-        "owner": "tlm-solutions",
-        "repo": "trekkie",
-        "rev": "0e06d6bc5cc4753805e11dc0af22c376f9c263aa",
-        "type": "github"
-      },
-      "original": {
-        "owner": "tlm-solutions",
-        "repo": "trekkie",
-        "type": "github"
-      }
-    },
     "utils": {
-      "locked": {
-        "lastModified": 1667395993,
-        "narHash": "sha256-nuEHfE/LcWyuSWnS8t12N1wc105Qtau+/OdUAjtQ0rA=",
-        "owner": "numtide",
-        "repo": "flake-utils",
-        "rev": "5aed5285a952e0b949eb3ba02c12fa4fcfef535f",
-        "type": "github"
-      },
-      "original": {
-        "owner": "numtide",
-        "repo": "flake-utils",
-        "type": "github"
-      }
-    },
-    "utils_2": {
       "locked": {
         "lastModified": 1667395993,
         "narHash": "sha256-nuEHfE/LcWyuSWnS8t12N1wc105Qtau+/OdUAjtQ0rA=",

@@ -80,16 +80,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    trekkie = {
-      url = "github:tlm-solutions/trekkie";
-      inputs.naersk.follows = "naersk";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
   };
 
   outputs = inputs@{ self, click, datacare, data-accumulator
     , telegram-decoder, dvb-api, funnel, nixpkgs, gnuradio-decoder, wartrammer
-    , windshield, stops, tlms-rs, trekkie, ... }:
+    , windshield, stops, tlms-rs, ... }:
     let
       system =
         "x86_64-linux"; # builtins.currentSystem doesn't work here apparently
@@ -106,7 +101,6 @@
         stops.overlays.default
         wartrammer.overlays.default
         windshield.overlays.default
-        trekkie.overlays.default
       ];
 
       nixosModules = {

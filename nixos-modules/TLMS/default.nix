@@ -11,7 +11,6 @@ self:
     ./telegram-decoder.nix
     ./telegram-decoder.nix
     ./wartrammer.nix
-    ./trekkie.nix
   ];
 
   nixpkgs.overlays = [
