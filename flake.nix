@@ -61,13 +61,6 @@
       inputs.utils.follows = "utils";
     };
 
-    datacare = {
-      url = "github:tlm-solutions/datacare";
-      inputs.nixpkgs.follows = "nixpkgs";
-      inputs.naersk.follows = "naersk";
-      inputs.utils.follows = "utils";
-    };
-
     stops = {
       url = "github:tlm-solutions/stop-names";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -82,7 +75,7 @@
 
   };
 
-  outputs = inputs@{ self, click, datacare, data-accumulator
+  outputs = inputs@{ self, click, data-accumulator
     , telegram-decoder, dvb-api, funnel, nixpkgs, gnuradio-decoder, wartrammer
     , windshield, stops, tlms-rs, ... }:
     let
@@ -92,7 +85,6 @@
       # composes all of our overlays into one
       overlays.default = nixpkgs.lib.composeManyExtensions [
         click.overlays.default
-        datacare.overlays.default
         data-accumulator.overlays.default
         telegram-decoder.overlays.default
         dvb-api.overlays.default
