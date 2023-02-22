@@ -49,32 +49,6 @@
         "type": "github"
       }
     },
-    "datacare": {
-      "inputs": {
-        "naersk": [
-          "naersk"
-        ],
-        "nixpkgs": [
-          "nixpkgs"
-        ],
-        "utils": [
-          "utils"
-        ]
-      },
-      "locked": {
-        "lastModified": 1674308692,
-        "narHash": "sha256-z8CMp1T7pMgddbcQ8dt+xbweXxBwYWVHRF5W1Xus3xk=",
-        "owner": "tlm-solutions",
-        "repo": "datacare",
-        "rev": "6a35814d6a9b3ac740a923d2377cbaa509c9d143",
-        "type": "github"
-      },
-      "original": {
-        "owner": "tlm-solutions",
-        "repo": "datacare",
-        "type": "github"
-      }
-    },
     "dvb-api": {
       "inputs": {
         "naersk": [
@@ -243,7 +217,6 @@
       "inputs": {
         "click": "click",
         "data-accumulator": "data-accumulator",
-        "datacare": "datacare",
         "dvb-api": "dvb-api",
         "funnel": "funnel",
         "gnuradio-decoder": "gnuradio-decoder",
@@ -365,11 +338,11 @@
     },
     "utils": {
       "locked": {
-        "lastModified": 1667395993,
-        "narHash": "sha256-nuEHfE/LcWyuSWnS8t12N1wc105Qtau+/OdUAjtQ0rA=",
+        "lastModified": 1676283394,
+        "narHash": "sha256-XX2f9c3iySLCw54rJ/CZs+ZK6IQy7GXNY4nSOyu2QG4=",
         "owner": "numtide",
         "repo": "flake-utils",
-        "rev": "5aed5285a952e0b949eb3ba02c12fa4fcfef535f",
+        "rev": "3db36a8b464d0c4532ba1c7dda728f4576d6d073",
         "type": "github"
       },
       "original": {
@@ -415,11 +388,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1676027395,
-        "narHash": "sha256-rjpI8KFYhDt+N9DYtBe15A6XcNkFyajIvXZpSg4GW+s=",
+        "lastModified": 1677108150,
+        "narHash": "sha256-Ji+NwkpWDHSydJj93LfNkgdzLoOL1Uqtf6GE253spKs=",
         "owner": "tlm-solutions",
         "repo": "windshield",
-        "rev": "98d44746127e3a716834a34b69b51f9cc5b5fbe0",
+        "rev": "1c47f3793f6949eb724360c8b5c725beaf486ee6",
         "type": "github"
       },
       "original": {
