@@ -388,11 +388,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1677276494,
-        "narHash": "sha256-EC8Ib/AN2jCsvQXc07WYFhsMJm2vd/16RIx83IQ0kl4=",
+        "lastModified": 1677278629,
+        "narHash": "sha256-Zd+B3jcCjKQipUv427JmUWH4QjhNNyzj5JEr0p1czNQ=",
         "owner": "tlm-solutions",
         "repo": "windshield",
-        "rev": "0f74d0af3cc85228a3e86a3f4cef24ffb3919220",
+        "rev": "3c00e1cebdcc4ce05931ec3c8f5673c901684bfb",
         "type": "github"
       },
       "original": {
