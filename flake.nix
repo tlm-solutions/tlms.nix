@@ -22,13 +22,6 @@
       inputs.utils.follows = "utils";
     };
 
-    telegram-decoder = {
-      url = "github:tlm-solutions/telegram-decoder";
-      inputs.nixpkgs.follows = "nixpkgs";
-      inputs.naersk.follows = "naersk";
-      inputs.utils.follows = "utils";
-    };
-
     dvb-api = {
       url = "github:tlm-solutions/dvb-api";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -76,7 +69,7 @@
   };
 
   outputs = inputs@{ self, click, data-accumulator
-    , telegram-decoder, dvb-api, funnel, nixpkgs, gnuradio-decoder, wartrammer
+    ,  dvb-api, funnel, nixpkgs, gnuradio-decoder, wartrammer
     , windshield, stops, tlms-rs, ... }:
     let
       system =
@@ -86,7 +79,6 @@
       overlays.default = nixpkgs.lib.composeManyExtensions [
         click.overlays.default
         data-accumulator.overlays.default
-        telegram-decoder.overlays.default
         dvb-api.overlays.default
         funnel.overlays.default
         gnuradio-decoder.overlays.default
